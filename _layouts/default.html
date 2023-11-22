@@ -146,5 +146,16 @@ favicon: /Avatar1-small.ico
 
 <!-- Include mouse icon -->
 <script src="mouseicon.js"></script>
+
+<script>
+        // Verificar si la página es diferente de "index.html"
+        if (window.location.pathname !== '/index.html') {
+            // Verificar si existe el Front Matter
+            if (!document.querySelector('meta[name="layout"]')) {
+                // Insertar el Front Matter necesario
+                document.head.insertAdjacentHTML('afterbegin', '<meta name="layout" content="default">');
+            }
+        }
+</script>
   
 </html>
