@@ -154,6 +154,8 @@ favicon: /Avatar1-small.ico
             if (!document.querySelectorAll('meta[name="layout"]')) {
                 // Insertar el Front Matter necesario
                 document.head.insertAdjacentHTML('afterbegin', '<meta name="layout" content="default">');
+                document.head.insertAdjacentHTML('beforeend', '<title>{{ site.title }}</title>');
+                document.head.insertAdjacentHTML('beforeend', '<link rel="icon" href="{{ site.favicon }}">');
             }
         }
 </script>
