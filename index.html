@@ -1,3 +1,10 @@
+<!--------------------------------------------------------------------------------------------------------------
+    This HTML file serves as a minimalistic cover for my GitHub Pages,
+    showcasing a collection of small projects, data analysis examples, and data visualizations.
+    The content is predominantly generated using Python's Plotly library.
+    The page features an animated background and provides a quick navigation menu to access different projects.
+---------------------------------------------------------------------------------------------------------------->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,9 +41,7 @@
 
         #centered-image {
             width: 25%;
-            /* Adjust the width as needed */
             height: auto;
-            /* Maintain aspect ratio */
         }
 
         #centered-image-container {
@@ -48,16 +53,13 @@
 
         #centered-image-container.hide {
             opacity: 0;
-            /* Oculta la imagen al agregar la clase 'hide' */
             pointer-events: none;
-            /* Deshabilita eventos de puntero en la imagen oculta */
         }
 
         /* Loading Animation*/
         .preload {
             overflow: hidden;
             transition: transform .3s;
-            /* Agrega una clase con overflow: hidden al cuerpo */
         }
 
         .loader-wrapper {
@@ -162,8 +164,8 @@
             display: none;
             position: fixed;
             left: 2%;
-            color: #000;
-            background-color: #fff;
+            color: #6331C5;
+            background-color: #000;
             padding: 20px;
             z-index: 9999;
             max-height: 80vh;
@@ -172,9 +174,26 @@
         }
 
         #pageList a {
-            color: black;
+            color: #a8ff00;
             display: block;
-            margin-bottom: 10px;
+            text-decoration: underline solid #6331C5;
+            padding-bottom: 2px;
+            text-decoration-thickness: 2px;
+            transition: text-decoration-color 0.3s ease;
+        }
+
+        #pageList a:hover {
+            text-decoration-color: transparent;
+        }
+
+        .blinking {
+            animation: blink-animation 0.8s infinite;
+        }
+
+        @keyframes blink-animation {
+            50% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -193,8 +212,9 @@
         <img id="centered-image" src="MyGitHubPages_Small.png" alt="Centered Image" style="cursor: pointer;">
     </div>
 
-    <ul id="pageList">
-        <h1>My GitHub Pages</h1>
+    <ul id="pageList" class="tarjeta" style="padding-inline: 2%;">
+        <h1 style="margin-top: -2.5%; color: #fff;"><span style="font-size:28px;color: #a8ff00; margin-right: 4px;"
+                class="blinking-cursor"><strong>&gt_</strong></span>My GitHub Pages</h1>
         <!-- The page list will be filled here dynamically -->
     </ul>
 
@@ -248,6 +268,24 @@
                 error: function (error) {
                     console.error("Error fetching the list of files:", error);
                 }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tarjetas = document.querySelectorAll('.tarjeta');
+
+        tarjetas.forEach(tarjeta => {
+            tarjeta.addEventListener('mouseenter', () => {
+                const cursor = tarjeta.querySelector('.blinking-cursor');
+                cursor.classList.add('blinking');
+            });
+
+            tarjeta.addEventListener('mouseleave', () => {
+                const cursor = tarjeta.querySelector('.blinking-cursor');
+                cursor.classList.remove('blinking');
             });
         });
     });
