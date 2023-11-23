@@ -9,7 +9,7 @@ layout: default
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Pages | Visualization</title>
-    <link rel="icon" href="/Avatar1-small.ico">
+    <link rel="icon" href="/images/Avatar1-small.ico">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -120,7 +120,15 @@ layout: default
             filter: FlipH;
             -ms-filter: "FlipH";
         }
-
+        #gif-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
     </style>
 </head>
 
@@ -129,8 +137,11 @@ layout: default
         <span class="loader"><span class="loader-inner"></span></span>
     </div>
 
+    <!-- Add your GIF URL here -->
+    <img id="gif-background" src="/images/GS01.gif" alt="Background GIF">
+
     <div id="bee">
-        <img src="/astroboy.png" />
+        <img src="/images/astroboy.png" />
     </div>
 {{ content }}
 </body>
