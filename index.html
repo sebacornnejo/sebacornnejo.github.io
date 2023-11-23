@@ -255,6 +255,11 @@
                         return file.type === "file" && file.name.endsWith(".html") && file.name !== "index.html";
                     });
 
+                    // Sort the HTML files alphabetically by name
+                    htmlFiles.sort(function (a, b) {
+                        return a.name.localeCompare(b.name);
+                    });
+
                     // Create links for each HTML file
                     htmlFiles.forEach(function (file) {
                         // Build the URL correctly without duplicating the repository name
@@ -262,7 +267,7 @@
                         $("#pageList").append("<li><a href='" + pageUrl + "'>" + file.name + "</a></li>");
                     });
 
-                    // Show the list
+                    // Show the sorted list
                     $("#pageList").show();
                 },
                 error: function (error) {
