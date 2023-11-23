@@ -1,6 +1,6 @@
 # My GitHub Pages Assets
 
-This repository stores the images, gifs, icons and .js used in My GitHub Pages.
+This repository stores the images, gifs and icons used in My GitHub Pages.
 
 ## Contents
 
@@ -9,4 +9,3 @@ This repository stores the images, gifs, icons and .js used in My GitHub Pages.
 - **GS01.gif:** Animated GIF used as background on visualization pages.
 - **MyGitHubPages_Small.png:** Image used in index.html.
 - **GS03.gif:** Animated GIF used as background in index.html.
-- **mouseicon.js:** JavaScript file that includes the mouse icon.
