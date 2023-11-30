@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Pages</title>
-    <link rel="icon" href="/images/Avatar1-small.ico">
+    <link rel="icon" href="Avatar1-small.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -25,6 +25,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            user-select: none;
             min-height: 100vh;
         }
 
@@ -195,6 +196,47 @@
                 opacity: 0;
             }
         }
+
+        .overlay {
+            position: fixed;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .hand-animation {
+            width: 50px;
+            height: 50px;
+            background: url('hand-icon.png') no-repeat center center;
+            background-size: contain;
+            animation: handMove 1.5s infinite;
+        }
+
+        @keyframes handMove {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 
@@ -205,21 +247,24 @@
 
 
     <!-- Add your GIF URL here -->
-    <img id="gif-background" src="/images/GS03.gif" alt="Background GIF">
+    <img id="gif-background" src="GS03.gif" alt="Background GIF">
 
     <!-- Add your image URL here -->
+    <div class="overlay" id="overlay">
+        <div class="hand-animation"></div>
+    </div>
     <div id="centered-image-container">
-        <img id="centered-image" src="/images/MyGitHubPages_Small.png" alt="Centered Image" style="cursor: pointer;">
+        <img id="centered-image" src="MyGitHubPages_Small.png" alt="Centered Image" style="cursor: pointer;">
     </div>
 
-    <ul id="pageList" class="tarjeta" style="padding-inline: 2%;">
+    <ul id="pageList" class="tarjeta" style="padding-inline: 2%; user-select: text; cursor: default;">
         <h1 style="margin-top: -2.5%; color: #fff;"><span style="font-size:28px;color: #a8ff00; margin-right: 4px;"
                 class="blinking-cursor"><strong>&gt_</strong></span>My GitHub Pages</h1>
         <!-- The page list will be filled here dynamically -->
     </ul>
 
     <div id="bee">
-        <img src="/images/astroboy.png" />
+        <img src="astroboy.png" />
     </div>
 
 </body>
@@ -255,11 +300,6 @@
                         return file.type === "file" && file.name.endsWith(".html") && file.name !== "index.html";
                     });
 
-                    // Sort the HTML files alphabetically by name
-                    htmlFiles.sort(function (a, b) {
-                        return a.name.localeCompare(b.name);
-                    });
-
                     // Create links for each HTML file
                     htmlFiles.forEach(function (file) {
                         // Build the URL correctly without duplicating the repository name
@@ -267,7 +307,7 @@
                         $("#pageList").append("<li><a href='" + pageUrl + "'>" + file.name + "</a></li>");
                     });
 
-                    // Show the sorted list
+                    // Show the list
                     $("#pageList").show();
                 },
                 error: function (error) {
@@ -294,6 +334,71 @@
             });
         });
     });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const overlay = document.getElementById('overlay');
+        const centeredImage = document.getElementById('centered-image');
+
+        let inactivityTimeout;
+        let imageClicked = false;
+
+        // Function to show the overlay with a delay after inactivity
+        function showOverlay() {
+            // Show the overlay only if the image hasn't been clicked
+            if (!imageClicked) {
+                overlay.classList.add('visible');
+                overlay.style.transition = 'opacity 0.5s ease-in-out';
+                overlay.style.opacity = '1';
+            }
+        }
+
+        // Function to hide the overlay
+        function hideOverlay() {
+            overlay.style.transition = 'opacity 0.5s ease-in-out';
+            overlay.style.opacity = '0';
+            clearTimeout(inactivityTimeout);
+        }
+
+        // Function to reset the overlay after a delay if no image click occurs
+        function resetOpacity() {
+            hideOverlay();
+            inactivityTimeout = setTimeout(showOverlay, 5000);
+        }
+
+        // Show the overlay after 5 seconds of inactivity
+        inactivityTimeout = setTimeout(showOverlay, 5000);
+
+        // Handle click on the image
+        function handleImageClick(event) {
+            // Prevent the click on the image from propagating to the body
+            event.stopPropagation();
+
+            // Mark that the image has been clicked
+            imageClicked = true;
+
+            // Reset the overlay and show the menu on image click
+            resetOpacity();
+
+            // Add your code here to show the menu, for example:
+            // showMenu();
+        }
+
+        // Handle click on the overlay
+        function handleOverlayClick(event) {
+            // Prevent the click on the overlay from propagating to the body
+            event.stopPropagation();
+        }
+
+        // Add click event listeners
+        centeredImage.addEventListener('click', handleImageClick);
+        overlay.addEventListener('click', handleOverlayClick);
+
+        // Reset the overlay after a delay if no image click occurs
+        document.body.addEventListener('click', resetOpacity);
+    });
+
 </script>
 
 </html>
