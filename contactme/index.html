@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html class="portfolio-root" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Holistic Ocean Data</title>
+    <link rel="stylesheet" href="/static/effects.css" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/stylemenu.css" />
+    <link rel="icon" href="/static/portfolio/Avatar1-small.ico">
+    
+    <script src="/static/vendor/jquery.min.js"></script>
+    
+    
+    
+    
+<link rel="stylesheet" href="/static/site.css">
+<script src="/static/page-motion.js" defer></script>
+</head>
+
+<body class="preload portfolio-page">
+    <img class="page-backdrop" src="/static/portfolio/MSG01.gif" alt="">
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <header id="obj1" class="row tag">
+        <div class="d-flex justify-content-between ml-auto tag"
+            style="margin-top: 0vw;background-color: #000;padding: 1vw; color: #fff;">
+            <a style="display: flex; justify-content: center; text-align: center; margin-left: 5.7vw;" href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="tag">
+                    <defs style="margin: 0;">
+                        <filter id="XFmznQhx9lM_1" class="jsx-715889512" style="margin: 0;">
+                            <feColorMatrix type="matrix"
+                                values="0.31640625 0 0 0 0.33984375 0.99609375 0 0 0 0 -0.99609375 0 0 0 0.99609375 0 0 0 1 0"
+                                color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
+                        </filter>
+                    </defs>
+                    <image href="/static/portfolio/Avatar3.png" alt="" class="jsx-715889512 imagen-filtrada"
+                        height="100%" loading="lazy"></image>
+                </svg>
+            </a>
+            <div class="row justify-content-center my-4" style="margin-right: 20.5vw; margin-left: -7vw !important;">
+                <div class="text-center textg" style="margin-top: auto; margin-bottom: auto;">
+                    <h3><span
+                            style="background-color: #000;margin-left: 2vw;font-size: 2vw; font-weight: 700; text-transform: uppercase;">Have a project in mind?</span></h3>
+                    <p><span
+                            style="background-color: #000;margin-left: 2vw; font-size: 1.2vw; font-weight: 700; text-transform: uppercase;color: #fff;">I’m open to ocean research collaborations, applied data science projects and talks.</span></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="obj2" class="row tag"
+        style="margin-top: auto;margin-left: 0.5vw !important; margin-bottom: auto; height: 100vh;">
+        <div class="col-md-30" style="margin-left: -1.3vw;">
+            <image src="/static/portfolio/Maneki-NekoDuoTone01.png" alt=""
+                style="height: 100%; aspect-ratio: 1 / 1;" loading="lazy" id="img1" onmouseover="toggleImages()"
+                onmouseout="toggleImages()"></image>
+            <image src="/static/portfolio/Maneki-NekoDuoTone02.png" alt=""
+                style="height: 100%; aspect-ratio: 1 / 1;" loading="lazy" id="img2" class="hidden"
+                onmouseover="toggleImages()" onmouseout="toggleImages()"></image>
+        </div>
+        <div class="col-md-70 my-auto p-1"
+            style="margin-right: -5vw; margin-left: 1vw; margin-top: auto; margin-bottom: auto;">
+            <div style="font-size: 1.2vw; margin-left: 0vw;margin-right: 1.5vw;margin-top: 0.1vw; border-color: white;background: #a8ff00; height: auto;"
+                class="border">
+                <h3 class="tag" style="margin-left: 0.3vw;">
+                    CONTACT ME
+                </h3>
+                <form style="margin-left: 0.3vw;" id="contact-form" method="post" enctype="text/plain" action="mailto:scornejoguz@gmail.com">
+                    
+
+                    
+                    <label for="id_full_name">&nbsp; FULL NAME<sup
+                            style="color: #5700FF;font-size: 1.2vw;">*</sup>:</label>
+                    <input type="text" id="id_full_name" name="full_name"
+                        placeholder="Your name" required style="width: 20vw; font-size: 1vw;">
+                    
+                    
+
+                    
+                    <label for="id_email_address">&nbsp;EMAIL<sup
+                            style="color: #5700FF;font-size: 1.2vw;">*</sup>:</label>
+                    <input type="email" id="id_email_address" name="email_address"
+                        placeholder="Enter a valid email" required style="width: 20vw; font-size: 1vw;">
+                    
+                    <br>
+
+                    
+                    
+                    <label for="id_subject" style="margin-top: 1vw;margin-bottom: 1vw;">&nbsp;
+                        &nbsp;
+                        SUBJECT<sup style="color: #5700FF;font-size: 1.2vw;">*</sup>:</label>
+                    <input type="text" id="id_subject" name="subject"
+                        placeholder="Why are you contacting me?" required style="width: 53.7vw; font-size: 1vw;">
+                    
+                    <br>
+
+                    
+                    <label for="id_message">&nbsp; &nbsp; MESSAGE<sup
+                            style="color: #5700FF;font-size: 1.2vw;">*</sup>:</label>
+                    <textarea id="id_message" name="message"
+                        placeholder="Let me know what you want to talk about..." required
+                        style="width: 53.7vw;height: 25vh; font-size: 1vw; font-family: 'Fira Code', monospace;"></textarea>
+                    
+                    <br>
+                    <span style="margin-left: 10vw !important;margin-bottom: 0px !important;font-size: 14px;"><sup
+                            style="color: #5700FF;font-size: 1.15vw;">*</sup>INDICATES REQUIRED FIELD</span>
+                    <div style="text-align: right;margin-right: 1.1vw;margin-bottom: -0.2vw;margin-top: -2vw;">
+                        <button type="submit" class="btnretro my-3 btn-lg rounded-0"
+                            style="text-transform: uppercase; font-size: 1vw;"><strong>Open email draft
+                                &#129034;</strong></button>
+                    </div>
+                <p id="contact-status" role="status">Your email app opens a draft for you to send.</p></form>
+<script src="/static/contact.js" defer></script>
+            </div>
+            <div class="d-flex justify-content-between ml-auto tag" style="margin-right: 1vw;">
+                <div class=" me-4" style="margin-left: 1vw;margin-top: 1vh;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="2vw" viewBox="0 0 512 512" style="fill: white;">
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z" />
+                </svg>
+                <h3 style="background-color: #000; color: #fff; font-size: 1vw; margin-top: -4vh !important; margin-left: 2.5vw !important;"
+                    class="textg"><strong>Somewhere in the World</strong></h3>
+            </div>
+            <div class="me-4" style="margin-left: 1vw;margin-top: 1vh;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="2vw" viewBox="0 0 512 512" style="fill: white;">
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M256 64C150 64 64 150 64 256s86 192 192 192c17.7 0 32 14.3 32 32s-14.3 32-32 32C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256v32c0 53-43 96-96 96c-29.3 0-55.6-13.2-73.2-33.9C320 371.1 289.5 384 256 384c-70.7 0-128-57.3-128-128s57.3-128 128-128c27.9 0 53.7 8.9 74.7 24.1c5.7-5 13.1-8.1 21.3-8.1c17.7 0 32 14.3 32 32v80 32c0 17.7 14.3 32 32 32s32-14.3 32-32V256c0-106-86-192-192-192zm64 192a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z" />
+                </svg>
+                <h3 style="background-color: #000; color: #fff; font-size: 1vw; margin-top: -4vh !important; margin-left: 2.5vw !important; user-select: text; cursor: default;"
+                    class="textg"><a class="contact-address" href="mailto:scornejoguz@gmail.com">scornejoguz@gmail.com</a></h3>
+            </div>
+            
+            
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const obj1Height = document.getElementById('obj1').offsetHeight;
+        document.getElementById('obj2').style.height = `calc(100vh - ${obj1Height}px)`;
+    </script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+    
+    <script>
+        // Preload images
+        var img1 = new Image();
+        img1.src = "/static/portfolio/Maneki-NekoDuoTone01.png";
+        var img2 = new Image();
+        img2.src = "/static/portfolio/Maneki-NekoDuoTone02.png";
+
+        // Function to toggle images
+        function toggleImages() {
+            var img1Element = document.getElementById('img1');
+            var img2Element = document.getElementById('img2');
+            // Check if img2 is fully loaded before toggling
+            if (!img2.complete) {
+                img2.onload = function () {
+                    img1Element.classList.toggle('hidden');
+                    img2Element.classList.toggle('hidden');
+                };
+            } else {
+                img1Element.classList.toggle('hidden');
+                img2Element.classList.toggle('hidden');
+            }
+        }
+    </script>
+
+
+    
+    <div id="toggle-btn" class="btn" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+        <div class="btn-outline btn-outline-1"></div>
+        <div class="btn-outline btn-outline-2"></div>
+        <div id="hamburger">
+            <span class="line line-1" style="color: #fff; background: #fff;"></span>
+            <span class="line line-2" style="color: #fff; background: #fff;"></span>
+        </div>
+    </div>
+
+    <div class="overlay">
+        <svg viewBox="0 0 1000 1000">
+            <path d="M0 2S175 1 500 1s500 1 500 1V0H0Z"></path>
+        </svg>
+    </div>
+
+    <div class="menu">
+        <div class="primary-menu">
+            <div class="menu-container">
+                <div class="wrapper">
+                    <div class="menu-item">
+                        <a style="font-weight: 700;" href="/" class="textv">HOME</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a style="font-weight: 700;" href="/aboutme/" class="textv">ABOUT ME</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a style="font-weight: 700;" href="/skills/" class="textv">SKILLS</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="secondary-menu" style="margin-top: 4vw;">
+            <div class="menu-container">
+                <div class="wrapper">
+                    <div class="menu-item">
+                        <a href="/portfoliog/" class="textv">GENERAL PORTFOLIO</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+<div class="menu-item"><a href="/laboratorio/" class="textv">VISUALIZATION LAB</a><div class="menu-item-revealer"></div></div>
+
+                    <div class="menu-item">
+                        <a href="/portfolioa/" class="textv">ACADEMIC PORTFOLIO</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="/blog/" class="textv">BLOG</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="/contactme/" class="textv">CONTACT</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="/fquestions/" class="textv">FREQUENT QUESTIONS</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/vendor/gsap.min.js"></script>
+    <script src="/static/vendor/CSSRulePlugin.min.js"></script>
+    
+
+
+    <style>
+        
+
+        .blinking {
+            animation: blink-animation 0.8s infinite;
+        }
+
+        @keyframes blink-animation {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <div id="bee">
+        <img src="/static/portfolio/astroboy.png" />
+    </div>
+
+    <script src="/static/mouseicon.js"></script>
+
+    
+    <script>
+        $(function () {
+            $(".loader-wrapper").fadeOut("slow");
+            $("body").removeClass("preload");
+        });
+    </script>
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+    <script>
+        const tl = gsap.timeline({
+            paused: true
+        });
+        let path = document.querySelector("path");
+        let spanBefore = CSSRulePlugin.getRule("#hamburger .line-2");
+
+        gsap.set(spanBefore, { background: "#000" });
+        gsap.set(".menu", { visibility: "hidden" });
+        gsap.set(".overlay", { opacity: 0, display: "none" });
+
+        function revealMenu() {
+            revealMenuItems();
+
+            const hamburger = document.getElementById("hamburger");
+            const toggleBtn = document.getElementById("toggle-btn");
+            const overlay = document.querySelector(".overlay");
+
+
+            
+            toggleBtn.onkeydown = (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleBtn.click();
+                }
+            };
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && hamburger.classList.contains("active")) {
+                    toggleBtn.click();
+                    toggleBtn.focus();
+                }
+            });
+            toggleBtn.onclick = (e) => {
+                toggleBtn.setAttribute("aria-expanded", String(!hamburger.classList.contains("active")));
+
+                hamburger.classList.toggle("active");
+                tl.reversed(!tl.reversed());
+            };
+        }
+        revealMenu();
+
+        function revealMenuItems() {
+            const start = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
+            const end = "M0, 1005S175, 995, 500, 995s500, 5, 500, 5V0H0Z";
+
+            const power2 = "power2.inout";
+            const power4 = "power4.inout";
+
+            tl.to("#hamburger", 0.7, {
+                marginTop: "-5px",
+                x: -40,
+                y: 40,
+                ease: power4
+            });
+            tl.to(
+                "#hamburger .line",
+                0.7,
+                {
+                    background: "#fff",
+                    ease: power2
+                },
+                "<"
+            );
+            tl.to(
+                spanBefore,
+                0.7,
+                {
+                    background: "#fff",
+                    ease: power2
+                },
+                "<"
+            );
+
+            tl.to(
+                ".btn .btn-outline",
+                0.7,
+                {
+                    x: -40,
+                    y: 40,
+                    width: "140px",
+                    height: "140px",
+                    border: "1px solid #e2e2dc",
+                    ease: power4
+                },
+                "<"
+            );
+            tl.to(
+                path,
+                0.7,
+                {
+                    attr: {
+                        d: start
+                    },
+                    ease: power2
+                },
+                "<"
+            ).to(
+                path,
+                0.7,
+                {
+                    attr: { d: end },
+                    ease: power2
+                },
+                "-=0.7"
+            );
+
+            tl.to(
+                ".overlay",
+                0.7,
+                {
+                    opacity: 1,
+                    display: "flex",
+                    ease: power2
+                },
+                "-=0.7"
+            );
+
+            tl.to(
+                ".menu",
+                0.7,
+                {
+                    visibility: "visible"
+                },
+                "-=0.7"
+            );
+
+            tl.to(
+                ".menu-item>a",
+                0.7,
+                {
+                    top: 0,
+                    ease: "power3.out",
+                    stagger: {
+                        amount: 0.5
+                    }
+                },
+                "-=0.7"
+            ).reverse();
+
+        }
+
+    </script>
+
+    
+    
+    
+
+    
+    
+    
+
+</body>
+
+</html>

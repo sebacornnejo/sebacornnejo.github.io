@@ -1,0 +1,418 @@
+<!--------------------------------------------------------------------------------------------------------------
+    This HTML file serves as a minimalistic cover for my GitHub Pages,
+    showcasing a collection of small projects, data analysis examples, and data visualizations.
+    The content is predominantly generated using Python's Plotly library.
+    The page features an animated background and provides a quick navigation menu to access different projects.
+---------------------------------------------------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization Lab | Holistic Ocean Data</title>
+    <link rel="icon" href="/images/Avatar1-small.ico">
+    
+    <script src="/static/vendor/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: 'Fira Code', monospace;
+            overflow: hidden !important;
+            margin: 0;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            min-height: 100vh;
+        }
+
+
+        #gif-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #centered-image {
+            width: 25%;
+            height: auto;
+        }
+
+        #centered-image-container {
+            text-align: center;
+            height: 100%;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        #centered-image-container.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Loading Animation*/
+        .preload {
+            overflow: hidden;
+            transition: transform .3s;
+        }
+
+        .loader-wrapper {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            border: 4px solid #5700FF;
+            animation: loader 2s infinite ease;
+        }
+
+        .loader-inner {
+            vertical-align: top;
+            display: inline-block;
+            width: 100%;
+            background-color: #a8ff00;
+            animation: loader-inner 2s infinite ease-in;
+        }
+
+        @keyframes loader {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(180deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            75% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loader-inner {
+            0% {
+                height: 0%;
+            }
+
+            25% {
+                height: 0%;
+            }
+
+            50% {
+                height: 100%;
+            }
+
+            75% {
+                height: 100%;
+            }
+
+            100% {
+                height: 0%;
+            }
+        }
+
+        #bee {
+            transition: transform .1s;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .left {
+            -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            filter: FlipH;
+            -ms-filter: "FlipH";
+        }
+
+        .right {
+            -moz-transform: scaleX(1);
+            -o-transform: scaleX(1);
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            filter: FlipH;
+            -ms-filter: "FlipH";
+        }
+
+        #pageList {
+            display: none;
+            position: fixed;
+            left: 2%;
+            color: #6331C5;
+            background-color: #000;
+            padding: 20px;
+            z-index: 9999;
+            max-height: 80vh;
+            overflow-y: auto;
+            white-space: nowrap;
+        }
+
+        #pageList a {
+            color: #a8ff00;
+            display: block;
+            text-decoration: underline solid #6331C5;
+            padding-bottom: 2px;
+            text-decoration-thickness: 2px;
+            transition: text-decoration-color 0.3s ease;
+        }
+
+        #pageList a:hover {
+            text-decoration-color: transparent;
+        }
+
+        .blinking {
+            animation: blink-animation 0.8s infinite;
+        }
+
+        @keyframes blink-animation {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .hand-animation {
+            width: 50px;
+            height: 50px;
+            background: url('/images/hand-icon.png') no-repeat center center;
+            background-size: contain;
+            animation: handMove 1.5s infinite;
+        }
+
+        @keyframes handMove {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+<link rel="stylesheet" href="/static/site.css"></head>
+
+<body class="preload lab-cover" style="overflow: hidden !important;">
+    <a class="lab-home" href="/">← Holistic Ocean Data</a>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+
+    <!-- Add your GIF URL here -->
+    <img id="gif-background" src="/images/GS03.gif" alt="">
+
+    <!-- Add your image URL here -->
+    <div class="overlay" id="overlay">
+        <div class="hand-animation"></div>
+    </div>
+    <div id="centered-image-container">
+        <button type="button" id="centered-image" aria-label="Open visualization list" aria-controls="pageList" aria-expanded="false"><img src="/images/MyGitHubPages_Small.png" alt=""><span>Visualization Lab</span></button>
+    </div>
+
+    <section id="pageList" aria-label="Visualization index" class="tarjeta" style="padding-inline: 2%; user-select: text; cursor: default;">
+        <h1 style="margin-top: -2.5%; color: #fff;"><span style="font-size:28px;color: #a8ff00; margin-right: 4px;"
+                class="blinking-cursor"><strong>&gt_</strong></span>Visualization Lab</h1>
+        <ul>
+<li><a href="/bar_NBAplayersheight_count.html">NBA player heights</a></li>
+<li><a href="/big_iris_dataset_dashboard.html">Big iris dataset dashboard</a></li>
+<li><a href="/boxplot_sepal_width.html">Boxplot sepal width</a></li>
+<li><a href="/boxplot_species_comparison.html">Boxplot species comparison</a></li>
+<li><a href="/ClustersMallCustomers.html">Mall customer clusters</a></li>
+<li><a href="/ComparisonMainOverallbySeason.html">NBA overall performance by season</a></li>
+<li><a href="/ComparisonMainPointsperGamebySeason.html">NBA points per game by season</a></li>
+<li><a href="/ComparisonMichaelJordanAverageSkills.html">Michael Jordan’s average stats</a></li>
+<li><a href="/DistributionOfWaterQualityFeatures.html">Distribution of water quality features</a></li>
+<li><a href="/FeatureValuesDistribution.html">Feature values distribution</a></li>
+<li><a href="/HeatmapBetweenWaterQualityFeatures.html">Heatmap between water quality features</a></li>
+<li><a href="/histogram_general_count.html">Histogram general count</a></li>
+<li><a href="/histogram_sepal_width.html">Histogram sepal width</a></li>
+<li><a href="/histogram_species_overlay.html">Histogram species overlay</a></li>
+<li><a href="/Map_DistributionofNBAPlayersbyCountry.html">NBA players by country</a></li>
+<li><a href="/Map_DistributionofNBAPlayersTeamsbyStates.html">NBA players and teams by state</a></li>
+<li><a href="/Map_DistributionofNBAPlayersTop5TeamsbyCountry.html">Players on five championship teams by country</a></li>
+<li><a href="/Map_DistributionofNBAPlayersTop5TeamsbyStates.html">Players on five championship teams by state</a></li>
+<li><a href="/NetRatingGamesPlayed_NBAplayer.html">NBA net rating and games played</a></li>
+<li><a href="/northwind_dashboard.html">Northwind dashboard</a></li>
+<li><a href="/PairwiseRelationship.html">Pairwise relationship</a></li>
+<li><a href="/PlayersAgesTop5NBAChampionTeams.html">Player ages on five championship teams</a></li>
+<li><a href="/PlayersOverallTop5NBAChampionTeams.html">Player performance on five championship teams</a></li>
+<li><a href="/scatter_matrix.html">Scatter matrix</a></li>
+<li><a href="/scatter_NBAplayersheight_performance.html">NBA player height and performance</a></li>
+<li><a href="/scatterplot_3d.html">Scatterplot 3d</a></li>
+<li><a href="/scatterplot_marginal_plots.html">Scatterplot marginal plots</a></li>
+<li><a href="/scatterplot_regression.html">Scatterplot regression</a></li>
+<li><a href="/scatterplot_sepal.html">Scatterplot sepal</a></li>
+<li><a href="/scatterplot_species.html">Scatterplot species</a></li>
+<li><a href="/TheElbowMethod_MLCustomers.html">Elbow method for customer clustering</a></li>
+<li><a href="/top_employees_chart.html">Top employees chart</a></li>
+<li><a href="/top_employeessales_chart.html">Top employees by sales</a></li>
+<li><a href="/top_products_chart.html">Top products chart</a></li>
+<li><a href="/WordsonaGooglesearch.html">Words in a Google search</a></li>
+<li><a href="/WordsonaWikipediapage.html">Words on a Wikipedia page</a></li>
+<li><a href="/WordsonmultiGooglesearch.html">Words across Google searches</a></li>
+<li><a href="/WordsonmultiWikipediapage.html">Words across Wikipedia pages</a></li>
+<li><a href="/WordsonX.html">Words in posts on X</a></li>
+</ul>
+    </section>
+
+    <div id="bee">
+        <img src="/images/astroboy.png" />
+    </div>
+
+</body>
+
+<!--Loading transition-->
+<script>
+    $(function () {
+        $(".loader-wrapper").fadeOut("slow");
+        $("body").removeClass("preload");
+    });
+</script>
+
+<!-- Include mouse icon -->
+<script src="mouseicon.js"></script>
+
+<script>
+    const coverImage = document.querySelector("#centered-image");
+    const list = document.querySelector("#pageList");
+    const openCharts = () => {
+        if (coverImage.getAttribute("aria-expanded") === "true") return;
+        coverImage.setAttribute("aria-expanded", "true");
+        coverImage.tabIndex = -1;
+        document.querySelector("#centered-image-container").classList.add("hide");
+        list.style.display = "block";
+        list.querySelector("a").focus();
+    };
+    coverImage.addEventListener("click", openCharts);
+    if (location.hash === "#charts") openCharts();
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tarjetas = document.querySelectorAll('.tarjeta');
+
+        tarjetas.forEach(tarjeta => {
+            tarjeta.addEventListener('mouseenter', () => {
+                const cursor = tarjeta.querySelector('.blinking-cursor');
+                cursor.classList.add('blinking');
+            });
+
+            tarjeta.addEventListener('mouseleave', () => {
+                const cursor = tarjeta.querySelector('.blinking-cursor');
+                cursor.classList.remove('blinking');
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const overlay = document.getElementById('overlay');
+        const centeredImage = document.getElementById('centered-image');
+
+        let inactivityTimeout;
+
+        // Function to show the overlay with a delay after inactivity
+        function showOverlay() {
+            // Show the overlay only if the image hasn't been clicked
+            if (centeredImage.getAttribute("aria-expanded") === "false") {
+                overlay.classList.add('visible');
+                overlay.style.transition = 'opacity 0.5s ease-in-out';
+                overlay.style.opacity = '1';
+            }
+        }
+
+        // Function to hide the overlay
+        function hideOverlay() {
+            overlay.style.transition = 'opacity 0.5s ease-in-out';
+            overlay.style.opacity = '0';
+            clearTimeout(inactivityTimeout);
+        }
+
+        // Function to reset the overlay after a delay if no image click occurs
+        function resetOpacity() {
+            hideOverlay();
+            inactivityTimeout = setTimeout(showOverlay, 5000);
+        }
+
+        // Show the overlay after 5 seconds of inactivity
+        inactivityTimeout = setTimeout(showOverlay, 5000);
+
+        // Handle click on the image
+        function handleImageClick(event) {
+            // Prevent the click on the image from propagating to the body
+            event.stopPropagation();
+
+            // Reset the overlay and show the menu on image click
+            resetOpacity();
+
+            // Add your code here to show the menu, for example:
+            // showMenu();
+        }
+
+        // Handle click on the overlay
+        function handleOverlayClick(event) {
+            // Prevent the click on the overlay from propagating to the body
+            event.stopPropagation();
+        }
+
+        // Add click event listeners
+        centeredImage.addEventListener('click', handleImageClick);
+        overlay.addEventListener('click', handleOverlayClick);
+
+        // Reset the overlay after a delay if no image click occurs
+        document.body.addEventListener('click', resetOpacity);
+    });
+
+</script>
+
+</html>

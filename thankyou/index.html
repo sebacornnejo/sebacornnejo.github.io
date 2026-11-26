@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html class="portfolio-root" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You | Holistic Ocean Data</title>
+    <link rel="stylesheet" href="/static/effects.css" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/stylemenu.css" />
+    <link rel="icon" href="/static/portfolio/Avatar1-small.ico">
+    
+    <script src="/static/vendor/jquery.min.js"></script>
+    
+    
+    
+    
+<link rel="stylesheet" href="/static/site.css">
+<script src="/static/page-motion.js" defer></script>
+</head>
+
+<body class="preload portfolio-page">
+    <img class="page-backdrop" src="/static/portfolio/TM02.gif" alt="">
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    
+
+    <header class="tag">
+        <div class="d-flex justify-content-center">
+            <img src="/static/portfolio/ShingiThanks02.webp" alt="GIF animado" style="width: 70vw;"
+                loading="lazy">
+        </div>
+    <p class="contact-return"><a href="/contactme/">Back to contact</a> · <a href="/">Home</a></p></header>
+
+
+    <style>
+        
+    </style>
+
+    <style>
+        body {
+            overflow: hidden !important;
+        }
+
+        footer {
+            display: none;
+            visibility: hidden;
+        }
+    </style>
+    <meta http-equiv="refresh" content="10;url=/">
+
+    
+    <div id="toggle-btn" class="btn" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+        <div class="btn-outline btn-outline-1"></div>
+        <div class="btn-outline btn-outline-2"></div>
+        <div id="hamburger">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+        </div>
+    </div>
+
+    <div class="overlay">
+        <svg viewBox="0 0 1000 1000">
+            <path d="M0 2S175 1 500 1s500 1 500 1V0H0Z"></path>
+        </svg>
+    </div>
+
+    <div class="menu">
+        <div class="primary-menu">
+            <div class="menu-container">
+                <div class="wrapper">
+                    <div class="menu-item">
+                        <a style="font-weight: 700;" href="/" class="textv">HOME</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a style="font-weight: 700;" href="/aboutme/" class="textv">ABOUT ME</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a style="font-weight: 700;" href="/skills/" class="textv">SKILLS</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="secondary-menu" style="margin-top: 4vw;">
+            <div class="menu-container">
+                <div class="wrapper">
+                    <div class="menu-item">
+                        <a href="/portfoliog/" class="textv">GENERAL PORTFOLIO</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+<div class="menu-item"><a href="/laboratorio/" class="textv">VISUALIZATION LAB</a><div class="menu-item-revealer"></div></div>
+
+                    <div class="menu-item">
+                        <a href="/portfolioa/" class="textv">ACADEMIC PORTFOLIO</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="/blog/" class="textv">BLOG</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="/contactme/" class="textv">CONTACT</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="/fquestions/" class="textv">FREQUENT QUESTIONS</a>
+                        <div class="menu-item-revealer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/vendor/gsap.min.js"></script>
+    <script src="/static/vendor/CSSRulePlugin.min.js"></script>
+    
+
+    <div id="bee">
+        <img src="/static/portfolio/astroboy.png" />
+    </div>
+
+    <script src="/static/mouseicon.js"></script>
+
+    
+    <script>
+        $(function () {
+            $(".loader-wrapper").fadeOut("slow");
+            $("body").removeClass("preload");
+        });
+    </script>
+
+    
+    
+    
+
+
+    
+    
+    
+
+    <script>
+        const tl = gsap.timeline({
+            paused: true
+        });
+        let path = document.querySelector("path");
+        let spanBefore = CSSRulePlugin.getRule("#hamburger .line-2");
+
+        gsap.set(spanBefore, { background: "#000" });
+        gsap.set(".menu", { visibility: "hidden" });
+        gsap.set(".overlay", { opacity: 0, display: "none" });
+
+        function revealMenu() {
+            revealMenuItems();
+
+            const hamburger = document.getElementById("hamburger");
+            const toggleBtn = document.getElementById("toggle-btn");
+            const overlay = document.querySelector(".overlay");
+
+
+            
+            toggleBtn.onkeydown = (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleBtn.click();
+                }
+            };
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && hamburger.classList.contains("active")) {
+                    toggleBtn.click();
+                    toggleBtn.focus();
+                }
+            });
+            toggleBtn.onclick = (e) => {
+                toggleBtn.setAttribute("aria-expanded", String(!hamburger.classList.contains("active")));
+
+                hamburger.classList.toggle("active");
+                tl.reversed(!tl.reversed());
+            };
+        }
+        revealMenu();
+
+        function revealMenuItems() {
+            const start = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
+            const end = "M0, 1005S175, 995, 500, 995s500, 5, 500, 5V0H0Z";
+
+            const power2 = "power2.inout";
+            const power4 = "power4.inout";
+
+            tl.to("#hamburger", 0.7, {
+                marginTop: "-5px",
+                x: -40,
+                y: 40,
+                ease: power4
+            });
+            tl.to(
+                "#hamburger .line",
+                0.7,
+                {
+                    background: "#fff",
+                    ease: power2
+                },
+                "<"
+            );
+            tl.to(
+                spanBefore,
+                0.7,
+                {
+                    background: "#fff",
+                    ease: power2
+                },
+                "<"
+            );
+
+            tl.to(
+                ".btn .btn-outline",
+                0.7,
+                {
+                    x: -40,
+                    y: 40,
+                    width: "140px",
+                    height: "140px",
+                    border: "1px solid #e2e2dc",
+                    ease: power4
+                },
+                "<"
+            );
+            tl.to(
+                path,
+                0.7,
+                {
+                    attr: {
+                        d: start
+                    },
+                    ease: power2
+                },
+                "<"
+            ).to(
+                path,
+                0.7,
+                {
+                    attr: { d: end },
+                    ease: power2
+                },
+                "-=0.7"
+            );
+
+            tl.to(
+                ".overlay",
+                0.7,
+                {
+                    opacity: 1,
+                    display: "flex",
+                    ease: power2
+                },
+                "-=0.7"
+            );
+
+            tl.to(
+                ".menu",
+                0.7,
+                {
+                    visibility: "visible"
+                },
+                "-=0.7"
+            );
+
+            tl.to(
+                ".menu-item>a",
+                0.7,
+                {
+                    top: 0,
+                    ease: "power3.out",
+                    stagger: {
+                        amount: 0.5
+                    }
+                },
+                "-=0.7"
+            ).reverse();
+
+        }
+
+    </script>
+
+    
+    
+    
+
+
+    
+    
+    
+</body>
+
+</html>

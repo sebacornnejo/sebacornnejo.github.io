@@ -1,40 +1,34 @@
-var bee = document.getElementById("bee");
-    document.addEventListener("mousemove", getMouse);
+(() => {
+  const character = document.getElementById("bee");
+  if (!character) return;
 
+  character.style.position = "fixed";
+  character.style.left = "0";
+  character.style.top = "0";
+  character.style.visibility = "hidden";
+  character.style.transition = "none";
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-    bee.style.position = "absolute"; //css		
-    var beepos = { x: 0, y: 0 };
+  let x = 0;
+  let y = 0;
+  let targetX = 0;
+  let targetY = 0;
+  let direction = 1;
+  let frame = 0;
 
-    setInterval(followMouse, 50);
+  const follow = () => {
+    x += (targetX - x) * 0.08;
+    y += (targetY - y) * 0.22;
+    character.style.transform = `translate3d(${x}px, ${y}px, 0) scaleX(${direction})`;
+    frame = Math.abs(targetX - x) < 1 && Math.abs(targetY - y) < 1 ? 0 : requestAnimationFrame(follow);
+  };
 
-    var mouse = { x: 0, y: 0 }; //mouse.x, mouse.y
-
-    var dir = "right";
-    function getMouse(e) {
-        mouse.x = e.pageX;
-        mouse.y = e.pageY;
-        if (mouse.x > beepos.x) {
-            dir = "right";
-        } else {
-            dir = "left";
-        }
-    }
-
-    function followMouse() {
-        //1. find distance X , distance Y
-        var distX = mouse.x - beepos.x;
-        var distY = mouse.y - beepos.y;
-
-        beepos.x += distX / 5;
-        beepos.y += distY / 2;
-
-        bee.style.left = beepos.x + "px";
-        bee.style.top = beepos.y + "px";
-
-        if (dir == "right") {
-            bee.setAttribute("class", "right");
-        } else {
-            bee.setAttribute("class", "left");
-        }
-
-    }
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType !== "mouse") return;
+    targetX = event.clientX;
+    targetY = event.clientY;
+    direction = targetX >= x ? 1 : -1;
+    character.style.visibility = "visible";
+    if (!frame) frame = requestAnimationFrame(follow);
+  }, { passive: true });
+})();
