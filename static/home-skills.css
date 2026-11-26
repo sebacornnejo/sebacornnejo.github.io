@@ -61,6 +61,7 @@
   align-items: center;
   justify-content: center;
   min-height: 3.06em;
+  margin-inline: -1px;
   padding: .28em .45em;
   background: #5700ff;
   color: #fff;
