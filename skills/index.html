@@ -17,14 +17,14 @@
     
     
 <script src="/static/signoff.js" defer></script>
-<link rel="stylesheet" href="/static/site.css">
+<link rel="stylesheet" href="/static/site.css?v=77d13eea9df8">
 <script src="/static/postseffects.js" defer></script>
-<script src="/static/page-motion.js" defer></script>
-<script src="/static/media.js" defer></script>
+<script src="/static/page-motion.js?v=79b58f1c0970" defer></script>
+<script src="/static/media.js?v=575e01a5ca0c" defer></script>
 </head>
 
 <body class="preload portfolio-page">
-    <img class="page-backdrop" src="/static/portfolio/MSG02.webp" alt="">
+    <img class="page-backdrop" src="/static/backgrounds/MSG02-poster.webp" data-animation-src="/static/portfolio/MSG02.webp" alt="" decoding="async" fetchpriority="low">
 
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
@@ -226,7 +226,7 @@
         </ul>
     </div>
 
-    <section class="row tag" style="margin-top: 0vw  !important; background: #a8ff00;height: 63vw !important;">
+    <section class="row tag skills-training" style="margin-top: 0vw  !important; background: #a8ff00;">
         <div class="col-md-30" onmouseover="intercambiarImagenes()" onmouseout="restablecerImagenes()"
             style="margin-top: 0.3vw !important;">
             <img src="/static/portfolio/YoSeaDuoTone01l.png" alt=""
@@ -275,23 +275,16 @@
             </h6>
             <div class="border backtxtv"
                 style="background: #5700FF; border-color: white;border-width: 0.15vw !important; margin-right: 1.1vw  !important; margin-top: 1vw  !important;">
-                <h3 class="card-title" style="margin-bottom:0;font-size:1.7vw; margin-left: 0.5vw;">Degrees<span
+                <h3 class="card-title degree-heading" style="margin-bottom:0;font-size:1.7vw; margin-left: 0.5vw;">Degrees<span
                         style="color: #a8ff00;">:</span></h3>
             </div>
             <div class="border"
                 style="background: #000; border-color: white;border-width: 0.15vw !important;margin-right: 1.1vw  !important;margin-top: -0.1vw  !important;">
-                <h6 class="tag"
-                    style="text-align: right; margin-right: 1vw  !important; font-size:1.7vw; margin-top: 1vw  !important;">
-                    <span
-                            class="textg">Bachelor’s degree in Geophysics</span>
-                    <span style="color: #a8ff00;font-size:1.5vw;">⯇</span>
-                </h6>
-                <h6 class="tag"
-                    style="text-align: right; margin-right: 1vw  !important; font-size:1.7vw; margin-top: 0.2vw  !important;">
-                    <span
-                            class="textg">Degree in Geophysics</span>
-                    <span style="color: #a8ff00;font-size:1.5vw;">⯇</span>
-                </h6>
+                <ul class="degree-list" role="list" aria-label="Degrees">
+                    <li class="degree-row"><span>PhD (c) in Atmospheric and Ocean Sciences, Universidad de Buenos Aires</span><span class="degree-arrow" aria-hidden="true">⯇</span></li>
+                    <li class="degree-row"><span>Bachelor’s degree in Geophysics</span><span class="degree-arrow" aria-hidden="true">⯇</span></li>
+                    <li class="degree-row"><span>Degree in Geophysics</span><span class="degree-arrow" aria-hidden="true">⯇</span></li>
+                </ul>
                 <form style="text-align: right; margin-right: 1vw  !important; margin-top: -0.1vw  !important;"
                     action="https://www.geofisica.udec.cl/" method="get" target="_blank" rel="noopener">
                     <button type="submit" class="btnretro my-3 btn-lg rounded-0" style="font-size: 1vw;"><strong>MORE
@@ -326,7 +319,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/media/blog/images/10_2_upscayl_4x_remacri.png" data-thumb="/static/previews/media/blog/images/10_2_upscayl_4x_remacri-640.webp" data-thumb-size="640x640" data-preview="/static/previews/media/blog/images/10_2_upscayl_4x_remacri-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
+                            <image data-media-src="/media/blog/images/10_2_upscayl_4x_remacri.png" data-thumb="/static/previews/media/blog/images/10_2_upscayl_4x_remacri-640.webp" data-thumb-size="640x640" data-medium="/static/previews/media/blog/images/10_2_upscayl_4x_remacri-960.webp" data-medium-size="960x960" data-preview="/static/previews/media/blog/images/10_2_upscayl_4x_remacri-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
                             <h3 style="font-size: 1.4vw;">What I took from Laura Keung’s design course</h3>
@@ -349,7 +342,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/media/blog/images/ML_Logo_11zon.png" data-thumb="/static/previews/media/blog/images/ML_Logo_11zon-640.webp" data-thumb-size="640x640" data-preview="/static/previews/media/blog/images/ML_Logo_11zon-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
+                            <image data-media-src="/media/blog/images/ML_Logo_11zon.png" data-thumb="/static/previews/media/blog/images/ML_Logo_11zon-640.webp" data-thumb-size="640x640" data-medium="/static/previews/media/blog/images/ML_Logo_11zon-960.webp" data-medium-size="960x960" data-preview="/static/previews/media/blog/images/ML_Logo_11zon-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
                             <h3 style="font-size: 1.4vw;">Choosing a model for the question</h3>
@@ -372,7 +365,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/media/blog/images/Avatar06_11zon.png" data-thumb="/static/previews/media/blog/images/Avatar06_11zon-640.webp" data-thumb-size="634x640" data-preview="/static/previews/media/blog/images/Avatar06_11zon-1600.webp" data-preview-size="1584x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
+                            <image data-media-src="/media/blog/images/Avatar06_11zon.png" data-thumb="/static/previews/media/blog/images/Avatar06_11zon-640.webp" data-thumb-size="634x640" data-medium="/static/previews/media/blog/images/Avatar06_11zon-960.webp" data-medium-size="950x960" data-preview="/static/previews/media/blog/images/Avatar06_11zon-1600.webp" data-preview-size="1584x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
                             <h3 style="font-size: 1.4vw;">The work of working together</h3>
@@ -395,7 +388,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/media/blog/images/StandUp01.png" data-thumb="/static/previews/media/blog/images/StandUp01-640.webp" data-thumb-size="640x213" data-preview="/static/previews/media/blog/images/StandUp01-1600.webp" data-preview-size="1600x533" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
+                            <image data-media-src="/media/blog/images/StandUp01.png" data-thumb="/static/previews/media/blog/images/StandUp01-640.webp" data-thumb-size="640x213" data-medium="/static/previews/media/blog/images/StandUp01-960.webp" data-medium-size="960x320" data-preview="/static/previews/media/blog/images/StandUp01-1600.webp" data-preview-size="1600x533" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
                             <h3 style="font-size: 1.4vw;">What stand-up taught me about science communication</h3>

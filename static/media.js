@@ -2,7 +2,7 @@ function loadImage(media) {
   let source = media.dataset.mediaSrc;
   const viewport = media.closest("svg").getBoundingClientRect();
   const density = window.devicePixelRatio || 1;
-  for (const variant of ["thumb", "preview"]) {
+  for (const variant of ["thumb", "medium", "preview"]) {
     if (!media.dataset[variant]) continue;
     const [width, height] = media.dataset[variant + "Size"].split("x").map(Number);
     if (width >= viewport.width * density && height >= viewport.height * density) {

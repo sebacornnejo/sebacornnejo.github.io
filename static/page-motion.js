@@ -1,4 +1,34 @@
 (() => {
+  const poster = document.querySelector(".page-backdrop[data-animation-src]");
+  if (poster) {
+    const loadBackdrop = async () => {
+      const animation = new Image();
+      animation.className = poster.className;
+      animation.alt = "";
+      animation.decoding = "async";
+      animation.fetchPriority = "low";
+      for (const source of [poster.dataset.animationSrc, poster.dataset.fallbackSrc]) {
+        if (!source) continue;
+        try {
+          animation.src = source;
+          await animation.decode();
+          poster.replaceWith(animation);
+          break;
+        } catch {
+          // Keep the first frame visible while trying the original animation.
+        }
+      }
+    };
+    const afterPaint = () => requestAnimationFrame(() => {
+      if (typeof requestIdleCallback === "function") {
+        requestIdleCallback(loadBackdrop, { timeout: 350 });
+      } else {
+        setTimeout(loadBackdrop, 0);
+      }
+    });
+    poster.decode().then(afterPaint, afterPaint);
+  }
+
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const canObserve = typeof IntersectionObserver === "function" && !reducedMotion;
 

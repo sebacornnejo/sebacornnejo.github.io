@@ -43,6 +43,37 @@ body.portfolio-page {
 
 .portfolio-page .scroll-indicator__line { transform-origin: top; }
 
+.degree-list {
+  margin: 0;
+  padding: .65em 0 0;
+  list-style: none;
+  color: #fff;
+  font-size: clamp(.8rem, 1.7vw, 1.7rem);
+  line-height: 1.25;
+}
+
+.degree-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: .55em;
+  padding: .28em max(.5rem, 1vw);
+  text-align: right;
+  transition: color .1s ease;
+}
+
+.degree-arrow { flex: none; color: #a8ff00; }
+@media (hover: hover) {
+  .degree-row:hover { color: #a8ff00; }
+}
+
+.skills-training { height: 63vw; }
+
+@media (max-width: 767px) {
+  .skills-training { height: auto; min-height: 63vw; }
+  .skills-training .degree-heading { font-size: .85rem !important; }
+}
+
 @font-face {
   font-family: "Fira Code";
   src: url("vendor/FiraCode-Bold.woff2") format("woff2");
