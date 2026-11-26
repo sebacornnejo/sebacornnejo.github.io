@@ -127,7 +127,7 @@
         }
     </style>
 <link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
-<link rel="stylesheet" href="/static/mobile.css?v=b2a2d2eab32e" media="(max-width: 767px)">
+<link rel="stylesheet" href="/static/mobile.css?v=2ac1c75bccaa" media="(max-width: 767px)">
 </head>
 
 <body class="preload">
@@ -207,8 +207,7 @@
     plot.style.width = "100%";
     plot.style.minWidth = width + "px";
     plot.style.height = height + "px";
-    const controlsHeight = width > viewport ? 44 : 0;
-    if (controlsHeight) {
+    if (width > viewport) {
       view.tabIndex = 0;
       view.setAttribute("role", "region");
       view.setAttribute("aria-label", "Scrollable chart");
@@ -227,8 +226,6 @@
         controls.append(button);
       }
     }
-    if (frame) frame.style.setProperty("--chart-height", height + controlsHeight + 20 + "px");
-
     const title = typeof layout.title === "string" ? { text: layout.title } : layout.title || {};
     const lines = titleLines(title.text || "", Math.min(viewport, 360) - 27);
     const mobileLayout = {

@@ -378,7 +378,7 @@ section:has(> #svg-container) + .img { margin-top: 0 !important; }
 [data-page="portfoliog"] iframe {
   display: block;
   width: 100% !important;
-  height: var(--chart-height, var(--chart-reserved-height, 30rem)) !important;
+  height: var(--chart-reserved-height, 480px) !important;
   min-height: 0;
   max-width: 100%;
   margin: 0 !important;
@@ -393,6 +393,12 @@ section:has(> #svg-container) + .img { margin-top: 0 !important; }
 }
 
 [data-page="portfoliog"] iframe[data-media-src$="/scatter_matrix.html"] { --chart-reserved-height: 702px; }
+[data-page="portfoliog"] iframe[data-media-src$="/northwind_dashboard.html"] { --chart-reserved-height: 524px; }
+
+[data-page="portfoliog"] [src$="/WordsonaWikipediapage.png"] {
+  height: auto;
+  aspect-ratio: 2368 / 2370;
+}
 
 .mobile-plot-view {
   width: 100%;
