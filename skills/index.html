@@ -19,6 +19,7 @@
     
 <script src="/static/signoff.js" defer></script>
 <link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
+<link rel="stylesheet" href="/static/mobile.css?v=b2a2d2eab32e" media="(max-width: 767px)">
 <script src="/static/postseffects.js?v=14ee09974eeb" defer></script>
 <script src="/static/page-motion.js?v=a7a156b238c5" defer></script>
 <script src="/static/media.js?v=f3d7bf812723" defer></script>
@@ -26,7 +27,7 @@
 <script src="/static/vendor/CSSRulePlugin.min.js" defer></script>
 </head>
 
-<body class="preload portfolio-page">
+<body class="preload portfolio-page" data-page="skills">
     <img class="page-backdrop" src="/static/backgrounds/MSG02-poster.webp" data-animation-src="/static/portfolio/MSG02.webp" alt="" decoding="async" fetchpriority="low">
     <div id="bee" aria-hidden="true"><img src="/static/portfolio/astroboy.png" width="150" height="112" alt="" decoding="async" fetchpriority="high"></div>
     <script>
@@ -66,7 +67,7 @@
     </div>
 
 
-    <div style="height: 8vw;background: #a8ff00;">
+    <div class="site-masthead" style="height: 8vw;background: #a8ff00;">
         <a class="fade-out" style="text-decoration: none;font-size: 2.5vw;margin-left: 0.5vw;color: #000;"
             href="/"><strong class="textv">S.
                 Cornejo-Guzmán</strong></a>
@@ -347,7 +348,7 @@
                     <div class="card card-project textg" style="margin: 0 0.5em;
                   background-color: #5700FF;border-radius: 0em;">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            class="img-wrapper" style="min-height: 35vw;position: relative;">
+                            class="img-wrapper" style="--cover-aspect: 4096 / 4096; min-height: 35vw;position: relative;">
                             <defs style="margin: 0;">
                                 <filter id="XFmznQhx9lM_1" class="jsx-715889512" style="margin: 0;">
                                     <feColorMatrix type="matrix"
@@ -370,7 +371,7 @@
                     <div class="card card-project textg" style="margin: 0 0.5em;
                   background-color: #5700FF;border-radius: 0em;">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            class="img-wrapper" style="min-height: 35vw;position: relative;">
+                            class="img-wrapper" style="--cover-aspect: 4096 / 4096; min-height: 35vw;position: relative;">
                             <defs style="margin: 0;">
                                 <filter id="XFmznQhx9lM_1" class="jsx-715889512" style="margin: 0;">
                                     <feColorMatrix type="matrix"
@@ -393,7 +394,7 @@
                     <div class="card card-project textg" style="margin: 0 0.5em;
                   background-color: #5700FF;border-radius: 0em;">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            class="img-wrapper" style="min-height: 35vw;position: relative;">
+                            class="img-wrapper" style="--cover-aspect: 3136 / 3168; min-height: 35vw;position: relative;">
                             <defs style="margin: 0;">
                                 <filter id="XFmznQhx9lM_1" class="jsx-715889512" style="margin: 0;">
                                     <feColorMatrix type="matrix"
@@ -416,7 +417,7 @@
                     <div class="card card-project textg" style="margin: 0 0.5em;
                   background-color: #5700FF;border-radius: 0em;">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            class="img-wrapper" style="min-height: 35vw;position: relative;">
+                            class="img-wrapper" style="--cover-aspect: 3240 / 1080; min-height: 35vw;position: relative;">
                             <defs style="margin: 0;">
                                 <filter id="XFmznQhx9lM_1" class="jsx-715889512" style="margin: 0;">
                                     <feColorMatrix type="matrix"
@@ -438,7 +439,7 @@
                     <div class="card card-project textg" style="margin: 0 0.5em;
                   background-color: #5700FF;border-radius: 0em;">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            class="img-wrapper" style="min-height: 35vw;position: relative;">
+                            class="img-wrapper" style="--cover-aspect: 500 / 270; min-height: 35vw;position: relative;">
                             <defs style="margin: 0;">
                                 <filter id="XFmznQhx9lM_1" class="jsx-715889512" style="margin: 0;">
                                     <feColorMatrix type="matrix"
@@ -469,7 +470,7 @@
     </div>
     
     <script src="/static/vendor/bootstrap.bundle.min.js"></script>
-    <script src="/static/carousels.js?v=ae0703a36c80"></script>
+    <script src="/static/carousels.js?v=fb21faba3750"></script>
 
     <div class="justify-content-center page-signoff" style="margin-top: 30vh; margin-left: 1vw;">
         <div class="tag">

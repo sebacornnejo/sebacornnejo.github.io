@@ -127,6 +127,7 @@
         }
     </style>
 <link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
+<link rel="stylesheet" href="/static/mobile.css?v=b2a2d2eab32e" media="(max-width: 767px)">
 </head>
 
 <body class="preload">
@@ -152,7 +153,125 @@
     </head>
 <body>
     <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script src="/static/plotly/plotly-2.27.0-2bdf0ef1bca85b83.js"></script>                <div id="e5d9a792-7301-4e20-988b-341c46c3ea2b" class="plotly-graph-div" style="height:1080px; width:1520px;"></div>            <script src="/static/plotly/chart-61eed2f875f85651.js"></script>        </div>
+        <script src="/static/plotly/plotly-2.27.0-2bdf0ef1bca85b83.js"></script>
+<script>
+(() => {
+  const frame = window.frameElement;
+  const viewportWindow = frame ? window.parent : window;
+  if (!viewportWindow.matchMedia("(max-width: 767px)").matches) return;
+
+  const canvas = document.createElement("canvas").getContext("2d");
+  canvas.font = "bold 15px Montserrat, sans-serif";
+  const entityDecoder = document.createElement("textarea");
+
+  function titleLines(title, width) {
+    return title.split(/<br\s*\/?\s*>/i).flatMap((part) => {
+      entityDecoder.innerHTML = part.replace(/<[^>]*>/g, "");
+      const lines = [];
+      let line = "";
+      for (const word of entityDecoder.value.trim().split(/\s+/)) {
+        const next = line ? line + " " + word : word;
+        if (line && canvas.measureText(next).width > width) {
+          lines.push(line);
+          line = word;
+        } else {
+          line = next;
+        }
+      }
+      if (line) lines.push(line);
+      return lines.map((text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+    });
+  }
+
+  const newPlot = Plotly.newPlot;
+  Plotly.newPlot = function (target, data, layout, config) {
+    Plotly.newPlot = newPlot;
+    const plot = typeof target === "string" ? document.getElementById(target) : target;
+    const view = document.createElement("div");
+    view.className = "mobile-plot-view";
+    plot.before(view);
+    view.append(plot);
+
+    const viewport = view.clientWidth;
+    const starts = (axis) => new Set(Object.keys(layout)
+      .filter((name) => new RegExp("^" + axis + "axis\\d*$").test(name))
+      .map((name) => layout[name].domain?.[0] ?? 0)).size;
+    const columns = Math.max(1, starts("x"));
+    const rows = Math.max(1, starts("y"));
+    const matrix = Math.max(0, ...data.map((trace) => trace.type === "splom" ? trace.dimensions.length : 0));
+    const geographic = data.some((trace) => /^choropleth/.test(trace.type));
+    const heatmap = data.some((trace) => trace.type === "heatmap");
+    // Retain the subplot grid and readable axes on charts wider than a phone.
+    const width = Math.max(viewport, columns * 198 + 64, matrix * 132 + 96, heatmap ? 510 : 0);
+    const height = geographic ? 410 : Math.max(460, rows * 265 + 148, matrix * 132 + 110);
+    plot.style.width = "100%";
+    plot.style.minWidth = width + "px";
+    plot.style.height = height + "px";
+    const controlsHeight = width > viewport ? 44 : 0;
+    if (controlsHeight) {
+      view.tabIndex = 0;
+      view.setAttribute("role", "region");
+      view.setAttribute("aria-label", "Scrollable chart");
+      const controls = document.createElement("div");
+      controls.className = "mobile-plot-controls";
+      view.before(controls);
+      for (const step of [-1, 1]) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = step < 0 ? "‹" : "›";
+        button.setAttribute("aria-label", step < 0 ? "Chart left" : "Chart right");
+        button.addEventListener("click", () => {
+          const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth";
+          view.scrollBy({ left: step * Math.round(view.clientWidth * .8), behavior });
+        });
+        controls.append(button);
+      }
+    }
+    if (frame) frame.style.setProperty("--chart-height", height + controlsHeight + 20 + "px");
+
+    const title = typeof layout.title === "string" ? { text: layout.title } : layout.title || {};
+    const lines = titleLines(title.text || "", Math.min(viewport, 360) - 27);
+    const mobileLayout = {
+      ...layout,
+      width: undefined,
+      height,
+      autosize: true,
+      title: {
+        ...title,
+        text: lines.join("<br>"),
+        font: { ...title.font, size: 15 },
+        x: 12 / width, xref: "container", xanchor: "left",
+        y: 1 - 27 / height, yref: "container", yanchor: "top",
+      },
+      margin: {
+        ...layout.margin,
+        l: geographic ? 12 : 48, r: 16, t: 39 + 19 * lines.length, b: geographic ? 68 : 72,
+      },
+    };
+    if (columns === 1 && matrix === 0 && !heatmap) {
+      mobileLayout.legend = {
+        ...layout.legend, orientation: "h", x: 0, xanchor: "left", y: -.24, yanchor: "top",
+        font: { ...layout.legend?.font, size: 10 },
+      };
+    }
+
+    const colorbar = (original) => ({
+      ...original, orientation: "h", x: .5, xanchor: "center", y: -.14, yanchor: "top",
+      len: .88, lenmode: "fraction", thickness: 12, thicknessmode: "pixels",
+      title: { ...original?.title, side: "bottom" },
+    });
+    if (geographic) {
+      for (const name of Object.keys(layout).filter((key) => /^coloraxis\d*$/.test(key))) {
+        mobileLayout[name] = { ...layout[name], colorbar: colorbar(layout[name].colorbar) };
+      }
+      data = data.map((trace) => /^choropleth/.test(trace.type)
+        ? { ...trace, colorbar: colorbar(trace.colorbar) } : trace);
+    }
+    if (frame) mobileLayout.dragmode = false;
+    return newPlot.call(this, target, data, mobileLayout, { ...config, responsive: true });
+  };
+})();
+</script>                <div id="e5d9a792-7301-4e20-988b-341c46c3ea2b" class="plotly-graph-div" style="height:1080px; width:1520px;"></div>            <script src="/static/plotly/chart-61eed2f875f85651.js"></script>        </div>
 </body>
 </html>
 </body>
