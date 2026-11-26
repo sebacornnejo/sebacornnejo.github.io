@@ -7,15 +7,38 @@ function afterPaint(callback) {
   requestAnimationFrame(() => requestAnimationFrame(callback));
 }
 
+const painted = new Promise((resolve) => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const name = "first-contentful-paint";
+    if (performance.getEntriesByName(name).length) {
+      resolve();
+      return;
+    }
+    if (!window.PerformanceObserver?.supportedEntryTypes?.includes("paint")) {
+      afterPaint(resolve);
+      return;
+    }
+    const finish = () => {
+      clearTimeout(fallback);
+      observer.disconnect();
+      resolve();
+    };
+    const observer = new PerformanceObserver((entries) => {
+      if (entries.getEntries().some((entry) => entry.name === name)) finish();
+    });
+    observer.observe({ type: "paint", buffered: true });
+    const fallback = setTimeout(finish, 2500);
+  }, { once: true });
+});
+
 const poster = document.querySelector(".page-backdrop[data-animation-src]");
 if (poster) {
-  document.addEventListener("DOMContentLoaded", async () => {
-    // Let the first visible frame and the cursor paint before warming the animation.
+  painted.then(async () => {
     const cursorImage = matchMedia("(hover: hover) and (pointer: fine)").matches
       && document.querySelector("#bee img");
     await Promise.allSettled([poster.decode(), cursorImage && cursorImage.decode()]);
-    afterPaint(() => whenIdle(loadBackdrop));
-  }, { once: true });
+    whenIdle(loadBackdrop);
+  });
 }
 
 async function loadBackdrop() {
@@ -66,15 +89,12 @@ const imageObserver = canObserve && new IntersectionObserver((entries) => {
   }
 }, { rootMargin: "280px 0px", scrollMargin: "0px 120px" });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Articles may move during DOM setup. Observe their final positions.
-  afterPaint(() => {
-    for (const image of document.querySelectorAll("image[data-media-src], img[data-media-src]")) {
-      if (imageObserver) imageObserver.observe(image.closest("svg") || image);
-      else loadImage(image);
-    }
-  });
-}, { once: true });
+painted.then(() => {
+  for (const image of document.querySelectorAll("image[data-media-src], img[data-media-src]")) {
+    if (imageObserver) imageObserver.observe(image.closest("svg") || image);
+    else loadImage(image);
+  }
+});
 
 const chartFrames = document.querySelectorAll("iframe[data-media-src]");
 if (chartFrames.length && canObserve) {
@@ -107,7 +127,9 @@ if (chartFrames.length && canObserve) {
     }
     scheduleChart();
   });
-  for (const chart of chartFrames) chartObserver.observe(chart);
+  painted.then(() => {
+    for (const chart of chartFrames) chartObserver.observe(chart);
+  });
   window.addEventListener("scroll", scheduleChart, { passive: true });
 } else {
   for (const chart of chartFrames) chart.src = chart.dataset.mediaSrc;

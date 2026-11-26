@@ -64,8 +64,12 @@
     if (line) line.style.transform = `scaleY(${Math.max(0, 1 - scroll / 100)})`;
   }
 
-  window.addEventListener("scroll", () => {
+  const schedule = () => {
     if (!frame) frame = requestAnimationFrame(update);
-  }, { passive: true });
-  if (scrollY) update();
+  };
+  window.addEventListener("scroll", schedule, { passive: true });
+  const navigation = performance.getEntriesByType("navigation")[0];
+  if (location.hash || (navigation && navigation.type !== "navigate")) {
+    window.addEventListener("pageshow", schedule, { once: true });
+  }
 })();
