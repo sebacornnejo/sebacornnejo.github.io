@@ -1,4 +1,48 @@
+function whenIdle(callback) {
+  if (typeof requestIdleCallback === "function") requestIdleCallback(callback, { timeout: 350 });
+  else setTimeout(callback, 0);
+}
+
+function afterPaint(callback) {
+  requestAnimationFrame(() => requestAnimationFrame(callback));
+}
+
+const poster = document.querySelector(".page-backdrop[data-animation-src]");
+if (poster) {
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Let the first visible frame and the cursor paint before warming the animation.
+    const cursorImage = matchMedia("(hover: hover) and (pointer: fine)").matches
+      && document.querySelector("#bee img");
+    await Promise.allSettled([poster.decode(), cursorImage && cursorImage.decode()]);
+    afterPaint(() => whenIdle(loadBackdrop));
+  }, { once: true });
+}
+
+async function loadBackdrop() {
+  const animation = new Image();
+  animation.className = poster.className;
+  animation.alt = "";
+  animation.decoding = "async";
+  animation.fetchPriority = "low";
+  for (const source of [poster.dataset.animationSrc, poster.dataset.fallbackSrc]) {
+    if (!source) continue;
+    try {
+      animation.src = source;
+      await animation.decode();
+      whenIdle(() => poster.replaceWith(animation));
+      return;
+    } catch {
+      // Keep the first frame visible while trying the original animation.
+    }
+  }
+}
+
 function loadImage(media) {
+  if (media instanceof HTMLImageElement) {
+    if (media.dataset.mediaSrcset) media.srcset = media.dataset.mediaSrcset;
+    media.src = media.dataset.mediaSrc;
+    return;
+  }
   let source = media.dataset.mediaSrc;
   const viewport = media.closest("svg").getBoundingClientRect();
   const density = window.devicePixelRatio || 1;
@@ -18,14 +62,19 @@ const imageObserver = canObserve && new IntersectionObserver((entries) => {
   for (const { target, isIntersecting } of entries) {
     if (!isIntersecting) continue;
     imageObserver.unobserve(target);
-    loadImage(target.querySelector("image[data-media-src]"));
+    loadImage(target instanceof HTMLImageElement ? target : target.querySelector("image[data-media-src]"));
   }
 }, { rootMargin: "280px 0px", scrollMargin: "0px 120px" });
 
-for (const image of document.querySelectorAll("image[data-media-src]")) {
-  if (imageObserver) imageObserver.observe(image.closest("svg"));
-  else loadImage(image);
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // Articles may move during DOM setup. Observe their final positions.
+  afterPaint(() => {
+    for (const image of document.querySelectorAll("image[data-media-src], img[data-media-src]")) {
+      if (imageObserver) imageObserver.observe(image.closest("svg") || image);
+      else loadImage(image);
+    }
+  });
+}, { once: true });
 
 const chartFrames = document.querySelectorAll("iframe[data-media-src]");
 if (chartFrames.length && canObserve) {

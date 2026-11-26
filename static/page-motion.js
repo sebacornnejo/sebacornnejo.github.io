@@ -1,85 +1,42 @@
 (() => {
-  const poster = document.querySelector(".page-backdrop[data-animation-src]");
-  if (poster) {
-    const loadBackdrop = async () => {
-      const animation = new Image();
-      animation.className = poster.className;
-      animation.alt = "";
-      animation.decoding = "async";
-      animation.fetchPriority = "low";
-      for (const source of [poster.dataset.animationSrc, poster.dataset.fallbackSrc]) {
-        if (!source) continue;
-        try {
-          animation.src = source;
-          await animation.decode();
-          poster.replaceWith(animation);
-          break;
-        } catch {
-          // Keep the first frame visible while trying the original animation.
-        }
-      }
-    };
-    const afterPaint = () => requestAnimationFrame(() => {
-      if (typeof requestIdleCallback === "function") {
-        requestIdleCallback(loadBackdrop, { timeout: 350 });
-      } else {
-        setTimeout(loadBackdrop, 0);
-      }
-    });
-    poster.decode().then(afterPaint, afterPaint);
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.remove("preload");
+    document.querySelector(".loader-wrapper")?.classList.add("loader-finished");
+  }, { once: true });
 
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const canObserve = typeof IntersectionObserver === "function" && !reducedMotion;
 
   function revealOnEntry(elements, visibleClass, pendingClass) {
     const observer = canObserve && new IntersectionObserver((entries) => {
-      for (const { target, isIntersecting } of entries) {
-        if (!isIntersecting) continue;
+      for (const { target, isIntersecting, boundingClientRect } of entries) {
+        if (!isIntersecting && boundingClientRect.top > 0) {
+          if (pendingClass) target.classList.add(pendingClass);
+          continue;
+        }
         if (pendingClass) target.classList.remove(pendingClass);
         target.classList.add(visibleClass);
         observer.unobserve(target);
       }
     }, { rootMargin: "0px 0px 10% 0px" });
 
-    const toReveal = Array.from(elements, (element) => ({
-      element,
-      wait: observer && !element.matches("header.tag, header .tag, .home-name")
-        && element.getBoundingClientRect().top >= innerHeight
-    }));
-    for (const {element, wait} of toReveal) {
-      if (!wait) {
-        element.classList.add(visibleClass);
-      } else {
-        if (pendingClass) element.classList.add(pendingClass);
-        observer.observe(element);
-      }
+    for (const element of elements) {
+      if (observer && !element.matches("header.tag, header .tag, .home-name")) observer.observe(element);
+      else element.classList.add(visibleClass);
     }
   }
 
   revealOnEntry(document.querySelectorAll(".tag"), "visible", "reveal-pending");
   revealOnEntry(document.querySelectorAll(".timeline li"), "in-view");
 
-  const headline = document.querySelector(".content-section__headline-container");
   const indicator = document.querySelector(".scroll-indicator");
   const line = indicator?.querySelector(".scroll-indicator__line");
   const labels = [...document.querySelectorAll(".fade-out")];
-  const letters = [];
-
-  if (headline) {
-    const text = Array.from(headline.querySelector("h1").textContent.trim().replace(/\s+/g, " "));
-    const fragment = document.createDocumentFragment();
-    for (const [index, char] of text.entries()) {
-      const span = document.createElement("span");
-      span.textContent = char === " " ? "\u00a0" : char;
-      span.setAttribute("aria-hidden", "true");
-      if (char === " ") span.classList.add("headline-gap");
-      const position = index / Math.max(1, text.length - 1);
-      letters.push({ span, speed: Math.exp(-Math.abs(position - 0.5) * 5) });
-      fragment.append(span);
-    }
-    headline.append(fragment);
-  }
+  const spans = [...document.querySelectorAll(".content-section__headline-container > span[aria-hidden]")];
+  const letters = spans.map((span, index) => {
+    const position = index / Math.max(1, spans.length - 1);
+    return { span, speed: Math.exp(-Math.abs(position - 0.5) * 5) };
+  });
 
   if (reducedMotion || (!letters.length && !labels.length)) return;
   const duration = 200 + Math.floor(Math.random() * 200);
@@ -100,7 +57,7 @@
 
     const distance = Math.min(duration, scroll);
     for (const { span, speed } of letters) {
-      span.style.transform = `translate3d(0, ${-distance * speed * 5}px, 0)`;
+      span.style.transform = distance > 0 && distance < duration ? `translate3d(0, ${-distance * speed * 5}px, 0)` : "";
       span.style.opacity = 1 - distance / duration;
     }
     if (indicator) indicator.style.opacity = Math.max(0, 1 - scroll / 150);
@@ -110,5 +67,5 @@
   window.addEventListener("scroll", () => {
     if (!frame) frame = requestAnimationFrame(update);
   }, { passive: true });
-  update();
+  if (scrollY) update();
 })();

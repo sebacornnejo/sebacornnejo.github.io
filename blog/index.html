@@ -3,6 +3,7 @@
 <html class="portfolio-root" lang="en">
 
 <head>
+    <link rel="preload" href="/static/vendor/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Synchronized Parallelism | Holistic Ocean Data</title>
@@ -11,18 +12,52 @@
     <link rel="stylesheet" href="/static/stylemenu.css" />
     <link rel="icon" href="/static/portfolio/Avatar1-small.ico">
     
-    <script src="/static/vendor/jquery.min.js"></script>
     
     
     
     
-<link rel="stylesheet" href="/static/site.css?v=77d13eea9df8">
-<script src="/static/page-motion.js?v=79b58f1c0970" defer></script>
-<script src="/static/media.js?v=575e01a5ca0c" defer></script>
+    
+<link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
+<script src="/static/page-motion.js?v=bc65f80575cc" defer></script>
+<script src="/static/media.js?v=3202141426c5" defer></script>
+<script src="/static/vendor/gsap.min.js" defer></script>
+<script src="/static/vendor/CSSRulePlugin.min.js" defer></script>
 </head>
 
 <body class="preload portfolio-page">
     <img class="page-backdrop" src="/static/portfolio/BBC02.gif" alt="" decoding="async" fetchpriority="low">
+    <div id="bee" aria-hidden="true"><img src="/static/portfolio/astroboy.png" width="150" height="112" alt="" decoding="async" fetchpriority="high"></div>
+    <script>
+(() => {
+  const character = document.getElementById("bee");
+  if (!character) return;
+
+  character.style.position = "fixed";
+  character.style.left = "0";
+  character.style.top = "0";
+  character.style.visibility = "hidden";
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+  character.style.translate = "0px 0px";
+  character.style.transition = "none";
+  character.style.willChange = "translate";
+  let previousX;
+
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType !== "mouse") return;
+    if (previousX === undefined) {
+      character.style.visibility = "visible";
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        character.style.transition = "translate 320ms cubic-bezier(.18, .72, .25, 1)";
+      }));
+    } else if (event.clientX !== previousX) {
+      character.style.transform = event.clientX > previousX ? "scaleX(1)" : "scaleX(-1)";
+    }
+    previousX = event.clientX;
+    character.style.translate = `${event.clientX}px ${event.clientY}px`;
+  }, { passive: true });
+})();
+    </script>
 
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
@@ -53,7 +88,7 @@
                                     color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                             </filter>
                         </defs>
-                        <image data-media-src="/media/blog/images/Anarcomedia_11zon.png" data-thumb="/static/previews/media/blog/images/Anarcomedia_11zon-640.webp" data-thumb-size="640x640" data-medium="/static/previews/media/blog/images/Anarcomedia_11zon-960.webp" data-medium-size="960x960" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
+                        <image data-media-src="/static/covers/ciencia-del-mar.webp" data-thumb="/static/previews/static/covers/ciencia-del-mar-640.webp" data-thumb-size="640x480" data-medium="/static/previews/static/covers/ciencia-del-mar-960.webp" data-medium-size="960x720" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                     </svg>
                     <div class="carousel-caption">
                         
@@ -73,7 +108,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 14th 2026</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/Anarcomedia_11zon.png" alt="Ciencia del mar, humor y autogestión" class="img-fluid">
+                <img decoding="async" data-modal-src="/static/covers/ciencia-del-mar.webp" alt="Ciencia del mar, humor y autogestión" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="es">
                     <p>La ecología social de Murray Bookchin me sirve para preguntar quién decide cómo habitamos la costa, quién puede producir conocimiento sobre el océano y cómo lo ponemos en común.</p><p>En Anarcomedia, junto con Milo Allende, llevamos esas preguntas a espacios autogestionados de stand-up. Los bares, los micros abiertos y los espacios barriales permiten probar una idea frente a gente que puede discutirla desde su propia experiencia. El remate funciona cuando deja ver una contradicción y abre la conversación.</p><p>En el seminario «Enraizar el sur Austral» presenté <a href="/portfolio_details/Presentations/no-se-trata-de-salvar-el-oceano/">«No se trata de salvar el océano»</a>. La pregunta que llevé a ese encuentro sobre salud mental, ciencia y territorio fue cómo aprender a cuidarnos mientras aprendemos a observar el mar. Eso también implica conversar sobre quién toma las decisiones y qué saberes pueden entrar en ellas.</p><p><a href="/blog/7/">Anarcomedia, entrada original de 2023</a></p>
                 </div>
@@ -97,7 +132,7 @@
                                     color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                             </filter>
                         </defs>
-                        <image data-media-src="/media/portfolio/imges/windRC.png" data-thumb="/static/previews/media/portfolio/imges/windRC-640.webp" data-thumb-size="640x640" data-medium="/static/previews/media/portfolio/imges/windRC-960.webp" data-medium-size="960x960" data-preview="/static/previews/media/portfolio/imges/windRC-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
+                        <image data-media-src="/static/covers/el-nino-pacifico.webp" data-thumb="/static/previews/static/covers/el-nino-pacifico-640.webp" data-thumb-size="640x426" alt="" class="jsx-715889512 imagen-filtrada" loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                     </svg>
                     <div class="carousel-caption">
                         
@@ -117,9 +152,9 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">October 27th 2026</h2>
                 </div>
-                <img loading="lazy" src="/media/portfolio/imges/windRC.png" alt="El Niño y las temperaturas del Pacífico" class="img-fluid">
+                <img decoding="async" data-modal-src="/static/covers/el-nino-pacifico.webp" alt="El Niño y las temperaturas del Pacífico" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="es">
-                    <p>En una conversación con Radio María Argentina repasé qué significa el calentamiento del Pacífico, cómo se relaciona con El Niño y qué preguntas abre para Argentina.</p><p><a href="https://radiomaria.org.ar/programacion/solo-por-hoy/el-nino-calentamiento-oceano-pacifico-efectos-argentina/">Escuchar la entrevista</a></p>
+                    <p>En una conversación con Radio María Argentina repasé qué significa el calentamiento del Pacífico, cómo se relaciona con El Niño y qué preguntas abre para Argentina.</p><p><a href="https://radiomaria.org.ar/programacion/solo-por-hoy/el-nino-calentamiento-oceano-pacifico-efectos-argentina/">Escuchar la entrevista</a></p><p>Mapa de NOAA Climate.gov. <a href="https://www.climate.gov/media/16311">Temperatura superficial del Pacífico en diciembre de 2023 respecto del promedio.</a></p>
                 </div>
             </div>
         </div>
@@ -161,7 +196,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">December 4th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/BuyerPersona_11zon_7OI1jtb.png" alt="Audience research with AI and nearest neighbours" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/BuyerPersona_11zon_7OI1jtb.png" alt="Audience research with AI and nearest neighbours" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>I used an AI assistant to draft questions and organise hypotheses about a potential audience. A profile is useful when it can be checked against interviews, behavioural evidence or other data you have permission to use.</p><p>With labelled examples, nearest neighbours can help assign new records to an existing group. The result depends on what gets measured, how features are scaled and how distance is defined. Test with examples held out of training and compare with a simple baseline before using predictions to make decisions.</p><p>I’d use those results to decide what to investigate next and which questions an outreach campaign still needs to answer.</p>
                 </div>
@@ -205,7 +240,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">December 2nd 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/datawrangler05.png" alt="Exploring a dataset with Data Wrangler" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/datawrangler05.png" alt="Exploring a dataset with Data Wrangler" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>In this exercise I used Data Wrangler in VS Code to inspect column types, missing values and distributions before cleaning a dataset. The visual interface let me try replacements and group summaries and see what changed.</p><p>The part I’d carry into another project is the Python code produced for each operation. I can review it, add checks and keep it with the analysis so the transformations can be rerun. Decisions about missing values still need to be documented.</p>
                 </div>
@@ -249,7 +284,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 26th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/10_2_upscayl_4x_remacri.png" alt="What I took from Laura Keung’s design course" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/10_2_upscayl_4x_remacri.png" alt="What I took from Laura Keung’s design course" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>I took Laura Keung’s Graphic Design Basics course to put some names to choices I’d already been making with layout, type and colour for research and comedy.</p><p>What stuck was to decide what the reader needs to see first, then use alignment, contrast and spacing to help them find it. A scientific figure and a show poster call for different decisions, but that question helps with both.</p><ul><li><a href="https://www.youtube.com/watch?v=GQS7wPujL2k&amp;t">Envato Tuts+ (YouTube)</a></li><li><a href="https://drive.google.com/file/d/1eY1zcFiKdw8FzThvzy6Zd6DzZBKq-HpE/view?usp=sharing">here</a></li></ul>
                 </div>
@@ -293,7 +328,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 25th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/ML_Logo_11zon.png" alt="Choosing a model for the question" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/ML_Logo_11zon.png" alt="Choosing a model for the question" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>I start with a baseline that I can explain. Regression can be a useful first comparison. Nearest neighbours depend on how distance is defined. Trees can model interactions, and random forests or boosting are alternatives when a single tree misses useful structure.</p><p>The task matters. K-means identifies groups without labels. ARIMA and exponential smoothing address forecasting from a time series. Each needs its own checks. For observations that are close in time or space, I set aside entire periods or regions when that matches how the model will be used.</p><p>My <a href="/portfoliog/">general portfolio</a> includes examples of segmentation and classification.</p>
                 </div>
@@ -337,7 +372,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 25th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/Avatar06_11zon.png" alt="The work of working together" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/Avatar06_11zon.png" alt="The work of working together" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>In research, teamwork shows up in small things. Can someone else reproduce my figure? Do we know who checked a result? Have we left time to hear a disagreement before agreeing on an interpretation?</p><p>I try to write down what I know, what I’m unsure about and what someone else will need to pick up the work. Listening, managing time and owning mistakes make those habits possible.</p>
                 </div>
@@ -381,7 +416,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 15th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/Avatar5full_11zon.png" alt="Reading Buddhist anarchism" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/Avatar5full_11zon.png" alt="Reading Buddhist anarchism" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>Gary Snyder and Stephen Batchelor gave me ways to connect Buddhist practice with questions about autonomy and how we live with other people.</p><p>I keep coming back to impermanence and attention. They give me a way to notice when I’m treating my own habits as inevitable, and to ask how I could act differently with the people around me.</p><ul><li><a href="https://drive.google.com/file/d/1YYc0mW057o6PxNnua26c8aK-57-V-0MD/view?usp=sharing">Gary Snyder</a></li><li><a href="https://drive.google.com/file/d/1YZUmBaGVr_s3gm_hXqV1qfPiRdpJRPuD/view?usp=sharing">Stephen Batchelor</a></li></ul>
                 </div>
@@ -425,7 +460,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 15th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/SimonBaillyGIF01.gif" alt="Para bailar y patear" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/SimonBaillyGIF01.gif" alt="Para bailar y patear" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>A playlist I put together for dancing. The cover is by Simon Bailly.</p><ul><li><a href="https://open.spotify.com/playlist/6bxskOdcRYaBgdwoNkNpQ1?si=a088d60a281047be">Spotify</a></li><li><a href="https://www.simon-bailly.com/">Simon Bailly</a></li></ul>
                 </div>
@@ -469,7 +504,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 15th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/Plantario01.jpg" alt="Plantario, an open mic in Concepción" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/Plantario01.jpg" alt="Plantario, an open mic in Concepción" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>Plantario began in June 2021 after Lihuen Comedy Jam closed. A few of us wanted another place to try material. I helped with early conversations, suggested the name and performed at the first show and a few others.</p><p>The work of producing it continued with Joven Iluminati and the people who kept the open mic going. My part was small, and it belongs alongside the work of the people who made the stage available.</p><ul><li><a href="https://www.instagram.com/plantariopenmic/">Plantario</a></li><li><a href="https://www.instagram.com/kakoamedia/">@kakoamedia</a></li><li><a href="https://www.instagram.com/eucvlipto/">@eucvlipto</a></li><li><a href="https://www.instagram.com/janoriverav/">@janoriverav</a></li><li><a href="https://www.instagram.com/jovenilluminati/">@joveniluminati</a></li><li><a href="https://www.instagram.com/lihuencomedyjam/">@lihuencomedyjam</a></li></ul>
                 </div>
@@ -513,7 +548,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 15th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/Anarcomedia_11zon.png" alt="Anarcomedia, science and bars" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/Anarcomedia_11zon.png" alt="Anarcomedia, science and bars" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>When public funds pay for research, I think researchers have a responsibility to share how they work and what they learn. In Chile I found that a stand-up show could start that conversation with people who rarely walk into a university lecture.</p><p>A comic has to write, try material in an open mic, hear what the audience catches and rewrite. Finding a venue, putting together a bill and getting people into the room are part of the work. Anarcomedia grew out of that practice in the Chilean stand-up circuit.</p><p>My <a href="/blog/ciencia-del-mar-y-autogestion/">later note on ocean science, humour and self-management</a> shows how I’ve carried the idea into more recent work.</p>
                 </div>
@@ -557,7 +592,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 15th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/StandUp01.png" alt="What stand-up taught me about science communication" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/StandUp01.png" alt="What stand-up taught me about science communication" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>Stand-up gave me a practical way to find out whether an explanation reaches the people in the room. A joke can hold enough of an idea for an audience to recognise it and then expose where that idea falls short.</p><p>In bars and public spaces the people listening bring their own experiences and questions. That changes what I say and what I understand about a subject. I think of that exchange as part of doing science in public.</p><p>I carry that idea into <a href="/blog/ciencia-del-mar-y-autogestion/">Anarcomedia</a>, where humour helps open up conversations about the sea.</p>
                 </div>
@@ -601,7 +636,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 15th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/HumoryCiencia.png" alt="Ciencia y humor" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/HumoryCiencia.png" alt="Ciencia y humor" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>In 2019, Diego Torres and I gave a talk in the Geophysics Lecture Series called Ciencia y humor. We compared how jokes and scientific arguments are built and looked at examples of humour in science communication.</p><p>Diego brought the perspective of someone who writes and performs comedy. I was interested in what happens to the way we explain a result when the audience can interrupt, ask questions and catch our assumptions.</p><ul><li><a href="https://docs.google.com/presentation/d/1YP25w_PBA_oZ9xbwQbXzstq7KE0u-CwT/edit?usp=drive_link&amp;ouid=101640674386159686026&amp;rtpof=true&amp;sd=true">Ciencia y Humor</a></li></ul>
                 </div>
@@ -645,7 +680,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 9th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/LOGO_-_OI.jpg" alt="Octava Invasión" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/LOGO_-_OI.jpg" alt="Octava Invasión" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>In 2022 I organised a show at Gran Refugio for stand-up comedians from Concepción. Every two weeks, performers from the Penquista scene shared a bill in Santiago.</p><p>We ran it ourselves. Travel and accommodation were hard to cover consistently, and eventually we had to stop. That experience made the infrastructure behind a show just as visible to me as what happens on stage.</p><ul><li><a href="https://www.instagram.com/octavainvasion/">Octava Invasión</a></li><li><a href="https://www.instagram.com/granrefugio/">@granrefugio</a></li><li><a href="https://www.instagram.com/kakoamedia/">@kakoamedia</a></li><li><a href="https://www.instagram.com/soyeldanilo/">@soyeldanilo</a></li><li><a href="https://www.instagram.com/palomitamalaonda/">@palomitamalaonda</a></li><li><a href="https://www.instagram.com/den_protector/">@den_protector</a></li><li><a href="https://www.instagram.com/jovenedison/">@jovenedison</a></li><li><a href="https://www.instagram.com/oye.lucas/">@oye.lucas</a></li><li><a href="https://www.instagram.com/noesetorres/">@noesetorres</a></li></ul>
                 </div>
@@ -689,7 +724,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 9th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/LosDeLaRisa.jpg" alt="Los de la risa" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/LosDeLaRisa.jpg" alt="Los de la risa" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>In 2019, I met Sofafrito and Mauricio Cuevas after work on Wednesdays to record Los de la risa. We would catch up, tell stories from the week and see what might work as comedy.</p><p>We recorded five episodes. I performed as Don Guatón at the time, so that’s the name you’ll hear in the recordings.</p><ul><li><a href="https://www.instagram.com/sofafrito/">@sofafrito</a></li><li><a href="https://open.spotify.com/show/0DBNYQofJhhsP2wxkTtb6q?si=5a8a5f9684d24971">Listen on Spotify</a></li></ul>
                 </div>
@@ -733,7 +768,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 9th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/ALas6EnElForo.jpg" alt="A las 6 en el foro" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/ALas6EnElForo.jpg" alt="A las 6 en el foro" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>Mario Allende and I started this music podcast in 2019. We picked up songs through friends, recommendations and long listening sessions. Chilean trap, including Pablo Chill-E, was one of the scenes we kept coming back to.</p><p>A track could be the start of a made-up story. That was the part I liked most. Diego Torres, a comedian from Concepción, joined us for one episode, and another recording never made it out.</p><ul><li><a href="https://www.instagram.com/mallende_/">@mallende_</a></li><li><a href="https://www.instagram.com/noesetorres/">@noesetorres</a></li><li><a href="https://open.spotify.com/show/5jjFkZLlaiWzfUXAHIkObG?si=7668c7cb161047b6">Listen on Spotify</a></li></ul>
                 </div>
@@ -777,7 +812,7 @@
                 <div class="textv">
                     <h2 class="my-2 h5 text-muted">November 9th 2023</h2>
                 </div>
-                <img loading="lazy" src="/media/blog/images/OllaComun.png" alt="Olla Común" class="img-fluid">
+                <img decoding="async" data-modal-src="/media/blog/images/OllaComun.png" alt="Olla Común" class="img-fluid">
                 <div class="my-4 textv enlarge-font article-content" lang="en">
                     <p>Luis López, Cami Colors and I made Olla Común with Concecomedia. We took things that were happening around us and imagined what would happen if we changed the rules.</p><p>We stopped when we could no longer find a regular time to get together. The episodes are still part of the record of what our comedy scene in Concepción was making together.</p><ul><li><a href="https://open.spotify.com/show/2wPdeQ6j2cp7DtqKLavF9P?si=2b6753efb63f44d1">Olla Común on Spotify</a></li><li><a href="https://www.instagram.com/concecomedia/">@concecomedia</a></li></ul>
                 </div>
@@ -812,8 +847,8 @@
 
     
     <script src="/static/vendor/bootstrap.bundle.min.js"></script>
-    <script src="/static/postseffects.js"></script>
-    <script src="/static/blog.js"></script>
+    <script src="/static/postseffects.js?v=14ee09974eeb"></script>
+    <script src="/static/blog.js?v=98fbd366a54f"></script>
 
 
     <footer class="text-center" style="background-color: #fff; margin-top: 1.5vh;">
@@ -1011,8 +1046,8 @@
         </div>
     </div>
 
-    <script src="/static/vendor/gsap.min.js"></script>
-    <script src="/static/vendor/CSSRulePlugin.min.js"></script>
+    
+    
     
 
 
@@ -1030,19 +1065,10 @@
         }
     </style>
 
-    <div id="bee">
-        <img src="/static/portfolio/astroboy.png" />
-    </div>
-
-    <script src="/static/mouseicon.js"></script>
+    
 
     
-    <script>
-        $(function () {
-            $(".loader-wrapper").fadeOut("slow");
-            $("body").removeClass("preload");
-        });
-    </script>
+    
 
 
     
@@ -1058,7 +1084,8 @@
     
 
     <script>
-        const tl = gsap.timeline({
+    document.addEventListener("DOMContentLoaded", () => {
+const tl = gsap.timeline({
             paused: true
         });
         let path = document.querySelector("path");
@@ -1198,7 +1225,9 @@
 
         }
 
-    </script>
+    
+    }, { once: true });
+</script>
 
     
 

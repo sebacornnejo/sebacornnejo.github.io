@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showEntry(index) {
     current = (index + cards.length) % cards.length;
     modalBody.replaceChildren(...Array.from(groups[current].details.children, (node) => node.cloneNode(true)));
+    for (const image of modalBody.querySelectorAll("img[data-modal-src]")) image.src = image.dataset.modalSrc;
     panel.scrollTop = 0;
   }
 

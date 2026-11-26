@@ -30,6 +30,26 @@ body.portfolio-page {
   transform: translateZ(0);
 }
 
+.portfolio-page .loader-wrapper {
+  transition: opacity .6s ease-in-out, visibility 0s linear .6s;
+}
+
+.portfolio-page .loader-finished {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portfolio-page .loader-inner {
+  height: 100%;
+  transform-origin: top;
+  animation-name: fill-loader;
+}
+
+@keyframes fill-loader {
+  0%, 25%, 100% { transform: scaleY(0); }
+  50%, 75% { transform: scaleY(1); }
+}
+
 .portfolio-page .tag {
   opacity: 1;
   transform: none;
@@ -39,7 +59,10 @@ body.portfolio-page {
 .portfolio-page .tag.reveal-pending {
   opacity: 0;
   transform: translateY(10vh);
+  transition: none;
 }
+
+.portfolio-page .content-section__headline-container > span { transform: none; }
 
 .portfolio-page .scroll-indicator__line { transform-origin: top; }
 

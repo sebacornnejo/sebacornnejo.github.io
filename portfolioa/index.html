@@ -3,6 +3,7 @@
 <html class="portfolio-root" lang="en">
 
 <head>
+    <link rel="preload" href="/static/vendor/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Academic Portfolio | Holistic Ocean Data</title>
@@ -11,20 +12,54 @@
     <link rel="stylesheet" href="/static/stylemenu.css" />
     <link rel="icon" href="/static/portfolio/Avatar1-small.ico">
     
-    <script src="/static/vendor/jquery.min.js"></script>
+    
     
     
     
     
 <script src="/static/signoff.js" defer></script>
-<link rel="stylesheet" href="/static/site.css?v=77d13eea9df8">
-<script src="/static/postseffects.js" defer></script>
-<script src="/static/page-motion.js?v=79b58f1c0970" defer></script>
-<script src="/static/media.js?v=575e01a5ca0c" defer></script>
+<link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
+<script src="/static/postseffects.js?v=14ee09974eeb" defer></script>
+<script src="/static/page-motion.js?v=bc65f80575cc" defer></script>
+<script src="/static/media.js?v=3202141426c5" defer></script>
+<script src="/static/vendor/gsap.min.js" defer></script>
+<script src="/static/vendor/CSSRulePlugin.min.js" defer></script>
 </head>
 
 <body class="preload portfolio-page">
     <img class="page-backdrop" src="/static/backgrounds/GW01-poster.webp" data-animation-src="/static/portfolio/GW01.webp" alt="" decoding="async" fetchpriority="low">
+    <div id="bee" aria-hidden="true"><img src="/static/portfolio/astroboy.png" width="150" height="112" alt="" decoding="async" fetchpriority="high"></div>
+    <script>
+(() => {
+  const character = document.getElementById("bee");
+  if (!character) return;
+
+  character.style.position = "fixed";
+  character.style.left = "0";
+  character.style.top = "0";
+  character.style.visibility = "hidden";
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+  character.style.translate = "0px 0px";
+  character.style.transition = "none";
+  character.style.willChange = "translate";
+  let previousX;
+
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType !== "mouse") return;
+    if (previousX === undefined) {
+      character.style.visibility = "visible";
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        character.style.transition = "translate 320ms cubic-bezier(.18, .72, .25, 1)";
+      }));
+    } else if (event.clientX !== previousX) {
+      character.style.transform = event.clientX > previousX ? "scaleX(1)" : "scaleX(-1)";
+    }
+    previousX = event.clientX;
+    character.style.translate = `${event.clientX}px ${event.clientY}px`;
+  }, { passive: true });
+})();
+    </script>
 
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
@@ -44,6 +79,7 @@
             <h1 class="content-section__headline">
                 ACADEMIC
             </h1>
+            <span aria-hidden="true">A</span><span aria-hidden="true">C</span><span aria-hidden="true">A</span><span aria-hidden="true">D</span><span aria-hidden="true">E</span><span aria-hidden="true">M</span><span aria-hidden="true">I</span><span aria-hidden="true">C</span>
         </div>
 
         <h1 class="scroll-indicator">
@@ -66,7 +102,7 @@
                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                 </filter>
             </defs>
-            <img decoding="async" sizes="100vw" srcset="/static/previews/static/portfolio/MonjeDS07_4x_11zon-1600.webp 1600w, /static/portfolio/MonjeDS07_4x_11zon.png 4096w" src="/static/portfolio/MonjeDS07_4x_11zon.png" alt="" class="jsx-715889512"
+            <img width="4096" height="4096" decoding="async" sizes="100vw" data-media-src="/static/portfolio/MonjeDS07_4x_11zon.png" data-media-srcset="/static/previews/static/portfolio/MonjeDS07_4x_11zon-720.webp 720w, /static/previews/static/portfolio/MonjeDS07_4x_11zon-1440.webp 1440w, /static/previews/static/portfolio/MonjeDS07_4x_11zon-1600.webp 1600w, /static/portfolio/MonjeDS07_4x_11zon.png 4096w" alt="" class="jsx-715889512"
                 style="filter: url(#XFmznQhx9lM_1);" loading="lazy">
         </svg>
         <div class="tag"
@@ -405,7 +441,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/media/blog/images/Anarcomedia_11zon.png" data-thumb="/static/previews/media/blog/images/Anarcomedia_11zon-640.webp" data-thumb-size="640x640" data-medium="/static/previews/media/blog/images/Anarcomedia_11zon-960.webp" data-medium-size="960x960" alt="" class="jsx-715889512 imagen-filtrada"
+                            <image data-media-src="/static/covers/no-se-trata-de-salvar-el-oceano.webp" data-thumb="/static/previews/static/covers/no-se-trata-de-salvar-el-oceano-640.webp" data-thumb-size="640x360" data-medium="/static/previews/static/covers/no-se-trata-de-salvar-el-oceano-960.webp" data-medium-size="960x540" alt="" class="jsx-715889512 imagen-filtrada"
                                 loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
@@ -429,7 +465,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/static/portfolio/PortfolioAcademic.png" data-thumb="/static/previews/static/portfolio/PortfolioAcademic-640.webp" data-thumb-size="640x640" data-medium="/static/previews/static/portfolio/PortfolioAcademic-960.webp" data-medium-size="960x960" data-preview="/static/previews/static/portfolio/PortfolioAcademic-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada"
+                            <image data-media-src="/static/covers/jicmar-coloquio.webp" data-thumb="/static/previews/static/covers/jicmar-coloquio-640.webp" data-thumb-size="640x360" alt="" class="jsx-715889512 imagen-filtrada"
                                 loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
@@ -736,7 +772,7 @@
                                         color-interpolation-filters="sRGB" class="jsx-715889512"></feColorMatrix>
                                 </filter>
                             </defs>
-                            <image data-media-src="/static/portfolio/PortfolioAcademic.png" data-thumb="/static/previews/static/portfolio/PortfolioAcademic-640.webp" data-thumb-size="640x640" data-medium="/static/previews/static/portfolio/PortfolioAcademic-960.webp" data-medium-size="960x960" data-preview="/static/previews/static/portfolio/PortfolioAcademic-1600.webp" data-preview-size="1600x1600" alt="" class="jsx-715889512 imagen-filtrada"
+                            <image data-media-src="/static/covers/estancia-legos.webp" alt="" class="jsx-715889512 imagen-filtrada"
                                 loading="lazy" preserveAspectRatio="xMidYMid slice"></image>
                         </svg>
                         <div class="carousel-caption">
@@ -852,7 +888,7 @@
 
     
     <script src="/static/vendor/bootstrap.bundle.min.js"></script>
-    <script src="/static/carousels.js"></script>
+    <script src="/static/carousels.js?v=ae0703a36c80"></script>
 
     <div class="justify-content-center page-signoff" style="margin-top: 30vh; margin-left: 1vw;">
         <div class="tag">
@@ -1062,8 +1098,8 @@
         </div>
     </div>
 
-    <script src="/static/vendor/gsap.min.js"></script>
-    <script src="/static/vendor/CSSRulePlugin.min.js"></script>
+    
+    
     
 
 
@@ -1081,19 +1117,10 @@
         }
     </style>
 
-    <div id="bee">
-        <img src="/static/portfolio/astroboy.png" />
-    </div>
-
-    <script src="/static/mouseicon.js"></script>
+    
 
     
-    <script>
-        $(function () {
-            $(".loader-wrapper").fadeOut("slow");
-            $("body").removeClass("preload");
-        });
-    </script>
+    
 
 
     
@@ -1109,7 +1136,8 @@
     
 
     <script>
-        const tl = gsap.timeline({
+    document.addEventListener("DOMContentLoaded", () => {
+const tl = gsap.timeline({
             paused: true
         });
         let path = document.querySelector("path");
@@ -1249,7 +1277,9 @@
 
         }
 
-    </script>
+    
+    }, { once: true });
+</script>
 
     
     <script>
