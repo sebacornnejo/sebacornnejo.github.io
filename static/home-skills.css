@@ -45,6 +45,7 @@
   aspect-ratio: 1;
   margin-block: .5rem;
   object-fit: contain;
+  scale: .94;
 }
 
 .home-skill-title,
@@ -74,6 +75,7 @@
 .home-skill-terminal {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: start;
   gap: .8rem;
   padding: clamp(.85rem, 1.4vw, 1.5rem);
@@ -90,6 +92,13 @@
   align-items: baseline;
   gap: .55em;
   color: #a8ff00;
+}
+
+.home-skill-heading > span:last-child { text-wrap: balance; }
+
+.home-skill-text {
+  max-inline-size: 46ch;
+  text-wrap: pretty;
 }
 
 .home-skill-prompt { font-weight: 700; }
