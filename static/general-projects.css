@@ -1,0 +1,124 @@
+.project-jumps,
+.general-projects,
+#interactive-examples {
+  width: min(94%, 88rem);
+  margin: clamp(1rem, 3vw, 2.5rem) auto;
+  font-family: "Fira Code", monospace;
+}
+
+.project-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.project-jumps a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .45rem .8rem;
+  background: #000;
+  color: #a8ff00;
+  border: 1px solid #a8ff00;
+  font-size: clamp(.85rem, 1vw, 1rem);
+  text-decoration: none;
+}
+
+.project-jumps a:hover,
+.project-jumps a:focus-visible {
+  color: #000;
+  background: #a8ff00;
+}
+
+.general-projects,
+#interactive-examples {
+  scroll-margin-top: max(5rem, 9vw);
+}
+
+.project-section-title {
+  margin: 0;
+  padding: .55em .7em;
+  background: #5700ff;
+  color: #fff;
+  font-size: clamp(1.1rem, 2.2vw, 2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.project-section-title > span {
+  color: #a8ff00;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+  margin-top: .65rem;
+}
+
+.project-panel {
+  min-width: 0;
+  padding: clamp(.8rem, 1.6vw, 1.45rem);
+  border: 2px solid #5700ff;
+  background: #000;
+  color: #fff;
+  font-size: clamp(.9rem, 1.05vw, 1.05rem);
+  line-height: 1.6;
+}
+
+.project-panel h3 {
+  margin: 0 0 .65rem;
+  color: #a8ff00;
+  font-size: clamp(1rem, 1.45vw, 1.45rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.project-work {
+  padding-inline-start: 1.2em;
+}
+
+.project-work li + li {
+  margin-top: .55em;
+}
+
+.project-panel a {
+  color: #a8ff00;
+  text-underline-offset: .17em;
+}
+
+.project-panel p {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.project-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.project-panel summary {
+  display: list-item;
+  padding-block: .55em;
+  cursor: pointer;
+}
+
+.project-preview {
+  padding: 0;
+}
+
+.project-preview > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.project-preview-copy {
+  padding: clamp(.8rem, 1.6vw, 1.45rem);
+}
+
+@media (max-width: 767px) {
+  .project-grid { grid-template-columns: 1fr; }
+}

@@ -20,6 +20,7 @@
 <script src="/static/signoff.js" defer></script>
 <link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
 <link rel="stylesheet" href="/static/mobile.css?v=2ac1c75bccaa" media="(max-width: 767px)">
+<link rel="stylesheet" href="/static/general-projects.css?v=ddc7e3e5a90a">
 <script src="/static/page-motion.js?v=a7a156b238c5" defer></script>
 <script src="/static/media.js?v=f3d7bf812723" defer></script>
 <script src="/static/vendor/gsap.min.js" defer></script>
@@ -90,7 +91,7 @@
 
     <div class="tag"
         style="background: #5700FF; color: #a8ff00; font-size: 13vw;text-align: center;font-weight: 700; text-transform: uppercase;">
-        <span>Applied data science projects</span>
+        <span>Data projects &amp; prototypes</span>
     </div>
 
     <div class="img tag" style="margin-top: -5% !important;pointer-events: none;">
@@ -107,9 +108,72 @@
         </svg>
         <div class="tag"
             style="background: #5700FF; color: #a8ff00; font-size: 6.2vw;text-align: center;font-weight: 700;margin-top: -0.3% !important; text-transform: uppercase;">
-            <span>Explore the data behind each example</span>
+            <span>From scripts to field tools</span>
         </div>
     </div>
+
+    <nav class="tag project-jumps" aria-label="On this page">
+        <a href="#consulting">Consulting</a>
+        <a href="#in-development">In development</a>
+        <a href="#interactive-examples">Interactive examples</a>
+    </nav>
+
+    <section id="consulting" class="tag general-projects" aria-labelledby="consulting-title">
+        <h2 id="consulting-title" class="project-section-title"><span aria-hidden="true">&gt;_</span> Consulting</h2>
+        <div class="project-grid">
+            <article class="project-panel">
+                <h3>Freelance work on Upwork</h3>
+                <ul class="project-work">
+                    <li><strong>Ocean transport.</strong> Set up and interpret circulation and particle tracking simulations to see where material travels or accumulates.</li>
+                    <li><strong>Desalination research.</strong> Gather and organise evidence for early feasibility studies.</li>
+                    <li><strong>Copernicus downloads.</strong> Build a Docker-based tool to select an area, date range and variables and save the data as CSV.</li>
+                </ul>
+                <p><a href="https://www.upwork.com/freelancers/~018ac52d3ea7f0c496">View my Upwork profile ↗</a></p>
+                <details>
+                    <summary>Original Upwork listings</summary>
+                    <p>Upwork has closed or redirected these listings.</p>
+                    <ul class="project-work">
+                        <li><a href="https://www.upwork.com/jobs/~021823795966928067812">Archived project listing ↗</a></li>
+                        <li><a href="https://www.upwork.com/jobs/~01f06ce8c5319ac487">Archived technical writing listing ↗</a></li>
+                        <li><a href="https://www.upwork.com/jobs/~01110ceecbe6c0325f">Copernicus data extraction ↗</a></li>
+                    </ul>
+                </details>
+            </article>
+            <article class="project-panel">
+                <h3>Short assignments with Geo Horizons</h3>
+                <ul class="project-work">
+                    <li><strong>Ocean climatologies.</strong> Summarise seasonal patterns in winds, waves and currents from long records.</li>
+                    <li><strong>Wind and wave analysis.</strong> Show which directions and sea states recur, with maps and roses for coastal studies.</li>
+                    <li><strong>Satellite ocean colour.</strong> Use deep learning to fill gaps left by clouds and check the reconstruction against observations held out of training.</li>
+                </ul>
+                <p><a href="https://geohorizons.co/">Visit Geo Horizons ↗</a></p>
+            </article>
+        </div>
+    </section>
+
+    <section id="in-development" class="tag general-projects" aria-labelledby="development-title">
+        <h2 id="development-title" class="project-section-title"><span aria-hidden="true">&gt;_</span> In development</h2>
+        <div class="project-grid">
+            <article class="project-panel project-preview">
+                <img src="/static/covers/sala-del-oleaje.webp" width="1366" height="820" loading="lazy" decoding="async"
+                    alt="Isometric lighthouse museum room with four guides gathered around a model lighthouse.">
+                <div class="project-preview-copy">
+                    <h3>Sala del Oleaje</h3>
+                    <p>An interactive lighthouse museum for PlayaConCiencia. Visitors can change the wind in a wave tank, read a buoy record and follow swell across an ocean. Each room starts with something they can try for themselves.</p>
+                </div>
+            </article>
+            <article class="project-panel project-preview">
+                <img src="/static/covers/marea-dock.webp" width="1440" height="900" loading="lazy" decoding="async"
+                    alt="Water samplers, seabirds and two characters on the pier in the MAREA prototype.">
+                <div class="project-preview-copy">
+                    <h3>MAREA</h3>
+                    <p>An independent game about observing the ocean. It begins on a Patagonian pier, where you collect water and plankton, check what you measured and keep a field notebook. The missions grow out of real sampling methods.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <h2 id="interactive-examples" class="tag project-section-title"><span aria-hidden="true">&gt;_</span> Interactive examples</h2>
 
     <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
         href="https://github.com/sebacornnejo/General_Porfolio/blob/main/NBAPlayers_DataAnalysis/README.md"
@@ -168,8 +232,7 @@
         <div class="col-md-85"
             style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
             <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span class="textg">A
-                    Simple Mall Customers Segmentation &#129034;</span>
+                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span class="textg">Customer segmentation with K-means &#129034;</span>
             </h3>
         </div>
     </a>
