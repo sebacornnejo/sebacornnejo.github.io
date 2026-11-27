@@ -110,7 +110,7 @@ body.portfolio-page {
 .skills-blog-heading .textg { text-wrap: balance; }
 .skills-blog-heading .textg > span { display: block; }
 
-[data-page="skills"] .cloud a { line-height: max(2.9vw, .82em); }
+[data-page="skills"] .cloud a { line-height: max(2.9vw, .75em); }
 
 @media (max-width: 767px) {
   .skills-training { height: auto; min-height: 63vw; }
