@@ -60,19 +60,20 @@ async function loadBackdrop() {
   }
 }
 
-function loadImage(media) {
+function loadImage(media, viewport) {
   if (media instanceof HTMLImageElement) {
     if (media.dataset.mediaSrcset) media.srcset = media.dataset.mediaSrcset;
     media.src = media.dataset.mediaSrc;
     return;
   }
   let source = media.dataset.mediaSrc;
-  const viewport = media.closest("svg").getBoundingClientRect();
+  const { width: visibleWidth, height: visibleHeight } =
+    viewport || media.closest("svg").getBoundingClientRect();
   const density = window.devicePixelRatio || 1;
   for (const variant of ["thumb", "medium", "preview", "large"]) {
     if (!media.dataset[variant]) continue;
     const [width, height] = media.dataset[variant + "Size"].split("x").map(Number);
-    if (width >= viewport.width * density && height >= viewport.height * density) {
+    if (width >= visibleWidth * density && height >= visibleHeight * density) {
       source = media.dataset[variant];
       break;
     }
@@ -81,20 +82,45 @@ function loadImage(media) {
 }
 
 const canObserve = typeof IntersectionObserver === "function";
-const imageObserver = canObserve && new IntersectionObserver((entries) => {
-  for (const { target, isIntersecting } of entries) {
-    if (!isIntersecting) continue;
-    imageObserver.unobserve(target);
-    loadImage(target instanceof HTMLImageElement ? target : target.querySelector("image[data-media-src]"));
-  }
-}, { rootMargin: "280px 0px", scrollMargin: "0px 120px" });
+const lazyImages = "image[data-media-src], img[data-media-src]";
 
-painted.then(() => {
-  for (const image of document.querySelectorAll("image[data-media-src], img[data-media-src]")) {
-    if (imageObserver) imageObserver.observe(image.closest("svg") || image);
-    else loadImage(image);
+function loadVisibleImages(entries, observer) {
+  for (const { target, isIntersecting, boundingClientRect } of entries) {
+    if (!isIntersecting) continue;
+    observer.unobserve(target);
+    loadImage(target instanceof HTMLImageElement ? target : target.querySelector("image[data-media-src]"),
+      boundingClientRect);
   }
+}
+
+const imageObserver = canObserve && new IntersectionObserver(loadVisibleImages, {
+  rootMargin: "280px 0px",
+  scrollMargin: "0px 120px",
 });
+const carouselObserver = canObserve && !("scrollMargin" in IntersectionObserver.prototype) &&
+  new IntersectionObserver((entries, observer) => {
+    for (const { target, isIntersecting } of entries) {
+      if (!isIntersecting) continue;
+      observer.unobserve(target);
+      // Once the strip is near the viewport, look ahead inside its horizontal clip.
+      const stripObserver = new IntersectionObserver(loadVisibleImages, { root: target, rootMargin: "0px 120px" });
+      for (const image of target.querySelectorAll(lazyImages)) {
+        stripObserver.observe(image.closest("svg") || image);
+      }
+    }
+  }, { rootMargin: "280px 0px" });
+
+// This deferred script runs after parsing, so cover requests can start before paint.
+for (const image of document.querySelectorAll(lazyImages)) {
+  const strip = carouselObserver && image.closest(".carousel-controls .carousel-inner");
+  if (strip) {
+    carouselObserver.observe(strip);
+  } else if (imageObserver) {
+    imageObserver.observe(image.closest("svg") || image);
+  } else {
+    loadImage(image);
+  }
+}
 
 const chartFrames = document.querySelectorAll("iframe[data-media-src]");
 if (chartFrames.length && canObserve) {

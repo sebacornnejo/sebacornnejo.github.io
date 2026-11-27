@@ -8,6 +8,7 @@
   const canObserve = typeof IntersectionObserver === "function" && !reducedMotion;
 
   function revealOnEntry(elements, visibleClass, pendingClass) {
+    const lead = pendingClass ? `${Math.round(innerHeight * .3)}px` : "10%";
     const observer = canObserve && new IntersectionObserver((entries) => {
       for (const { target, isIntersecting, boundingClientRect } of entries) {
         if (!isIntersecting && boundingClientRect.top > 0) {
@@ -18,7 +19,7 @@
         target.classList.add(visibleClass);
         observer.unobserve(target);
       }
-    }, { rootMargin: "0px 0px 10% 0px" });
+    }, { rootMargin: `0px 0px ${lead} 0px` });
 
     for (const element of elements) {
       if (observer && !element.matches("header.tag, header .tag, .home-name")) observer.observe(element);

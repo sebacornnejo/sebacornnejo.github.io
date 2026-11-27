@@ -110,6 +110,8 @@ body.portfolio-page {
 .skills-blog-heading .textg { text-wrap: balance; }
 .skills-blog-heading .textg > span { display: block; }
 
+[data-page="skills"] .cloud a { line-height: max(2.9vw, .82em); }
+
 @media (max-width: 767px) {
   .skills-training { height: auto; min-height: 63vw; }
   .skills-training .degree-heading { font-size: .85rem !important; }
@@ -176,6 +178,14 @@ body.portfolio-page {
   background: #000;
   text-align: center;
 }
+
+.profile-actions {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.profile-actions button { white-space: nowrap; }
+.control-arrow { vertical-align: -.03em; }
 
 #contact-status {
   margin: .45rem 0;
@@ -487,12 +497,6 @@ body.portfolio-page {
   .home-greeting > .col-md-70 { padding: .7rem !important; }
   .home-greeting .textv h2 { font-size: clamp(1.2rem, 5vw, 1.6rem) !important; }
   .home-greeting .textv h6:last-child { margin-inline-start: 0 !important; }
-  .home-greeting .justify-content {
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    margin: 0 !important;
-  }
-  .home-greeting .justify-content form { padding: .4rem !important; }
   .home-greeting .btnretro strong { font-size: .8rem !important; }
 }
 @media (max-width: 767px) {
