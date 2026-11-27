@@ -373,9 +373,9 @@ body.portfolio-page {
   display: grid;
   grid-row: 2;
   grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
+  justify-items: start;
   margin-inline: 1vw;
-  text-align: center;
+  text-align: left;
 }
 .page-signoff h3 {
   width: fit-content;
