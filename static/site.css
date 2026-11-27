@@ -353,10 +353,29 @@ body.portfolio-page {
   #obj2:has(#contact-form) .col-md-70 > .d-flex .me-4 { display: flex; align-items: center; gap: .4rem; margin: 0 !important; }
 }
 
-/* The original five-page joke, with its terminal cursor sized to the actual line. */
+[data-page="portfolioa"] .tarjeta[id] {
+  scroll-margin-block-start: max(5rem, 9vw);
+}
+
+/* Equal space above and below the two lines, with the footer at the bottom. */
+.page-ending {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto 1fr;
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+}
+.page-ending > footer {
+  grid-row: 3;
+  align-self: end;
+  margin-block-start: .35rem;
+}
 .page-signoff {
-  margin: clamp(5rem, 22vh, 15rem) 1vw 0 !important;
-  max-width: 98%;
+  display: grid;
+  grid-row: 2;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  margin-inline: 1vw;
+  text-align: center;
 }
 .page-signoff h3 {
   width: fit-content;
@@ -501,6 +520,12 @@ footer:has(.footer-links) { position: relative; z-index: 1; }
   .footer-links h3 { grid-column: 1 / -1; margin: 0; padding: .25rem; }
   .footer-links h3, .footer-links h3 span { font-size: .8rem !important; }
   .footer-links .nav-link { min-height: 44px; padding: .3rem; margin: 0 !important; font-size: .75rem !important; }
+}
+
+@media (560px <= width <= 767px) and (max-height: 480px) {
+  .page-ending .footer-links { grid-template-columns: max-content repeat(6, minmax(0, 1fr)); }
+  .page-ending .footer-links h3 { grid-column: auto; align-self: center; }
+  .page-ending .footer-links .nav-link { padding-inline: 0; }
 }
 
 @media (max-width: 767px) {

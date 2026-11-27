@@ -18,13 +18,14 @@
     
     
 <script src="/static/signoff.js" defer></script>
-<link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
-<link rel="stylesheet" href="/static/mobile.css?v=2ac1c75bccaa" media="(max-width: 767px)">
+<link rel="stylesheet" href="/static/site.css?v=927583630f9d">
+<link rel="stylesheet" href="/static/mobile.css?v=00abdaf3bc4b" media="(max-width: 767px)">
 <script src="/static/postseffects.js?v=14ee09974eeb" defer></script>
 <script src="/static/page-motion.js?v=a7a156b238c5" defer></script>
 <script src="/static/media.js?v=f3d7bf812723" defer></script>
 <script src="/static/vendor/gsap.min.js" defer></script>
 <script src="/static/vendor/CSSRulePlugin.min.js" defer></script>
+<link rel="stylesheet" href="/static/general-projects.css?v=b0614185ca43">
 </head>
 
 <body class="preload portfolio-page" data-page="portfolioa">
@@ -112,7 +113,15 @@
         </div>
     </div>
 
-    <div class="row tag tarjeta" style="margin-top: 3.4vw  !important;">
+    <nav class="tag project-jumps" aria-label="On this page">
+        <a href="#publications">Peer-reviewed publications</a>
+        <a href="#preprints-datasets">Preprints &amp; datasets</a>
+        <a href="#talks-posters">Talks &amp; posters</a>
+        <a href="#gray-literature">Gray literature</a>
+        <a href="#projects-collaborations">Projects &amp; collaborations</a>
+    </nav>
+
+    <div class="row tag tarjeta" id="publications" tabindex="-1" style="margin-top: 3.4vw  !important;">
         <div class="col-md-60"
             style="background: #5700FF; text-align: justify; margin-left: 2.1vw !important;padding-top: 0.3vw;">
             <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
@@ -324,7 +333,7 @@
                 data-bs-target="#carouselControls1" aria-label="Next items"
                 style="margin-right: 1.5vw !important;font-size: 1.5vw;"><strong>&#129034;</strong></button>
         </div>
-    </div>    <div class="row tag tarjeta" style="margin-top: 3.4vw  !important;">
+    </div>    <div class="row tag tarjeta" id="preprints-datasets" tabindex="-1" style="margin-top: 3.4vw  !important;">
         <div class="col-md-60"
             style="background: #5700FF; text-align: justify; margin-left: 2.1vw !important;padding-top: 0.3vw;">
             <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
@@ -417,7 +426,7 @@
                 style="margin-right: 1.5vw !important;font-size: 1.5vw;"><strong>&#129034;</strong></button>
         </div>
     </div>
-    <div class="row tag tarjeta" style="margin-top: 3.4vw  !important;">
+    <div class="row tag tarjeta" id="talks-posters" tabindex="-1" style="margin-top: 3.4vw  !important;">
         <div class="col-md-60"
             style="background: #5700FF; text-align: justify; margin-left: 2.1vw !important;padding-top: 0.3vw;">
             <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
@@ -584,7 +593,7 @@
     </div>
 
 
-    <div class="row tag tarjeta" style="margin-top: 3.4vw  !important;">
+    <div class="row tag tarjeta" id="gray-literature" tabindex="-1" style="margin-top: 3.4vw  !important;">
         <div class="col-md-60"
             style="background: #5700FF; text-align: justify; margin-left: 2.1vw !important;padding-top: 0.3vw;">
             <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
@@ -750,7 +759,7 @@
         </div>
     </div>
 
-    <div class="row tag tarjeta" style="margin-top: 3.4vw  !important;">
+    <div class="row tag tarjeta" id="projects-collaborations" tabindex="-1" style="margin-top: 3.4vw  !important;">
         <div class="col-md-60"
             style="background: #5700FF; text-align: justify; margin-left: 2.1vw !important;padding-top: 0.3vw;">
             <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
@@ -891,7 +900,8 @@
     <script src="/static/vendor/bootstrap.bundle.min.js"></script>
     <script src="/static/carousels.js?v=fb21faba3750"></script>
 
-    <div class="justify-content-center page-signoff" style="margin-top: 30vh; margin-left: 1vw;">
+    <div class="page-ending">
+    <div class="page-signoff">
         <div class="tag">
             <h3
                 style="background: #a8ff00; margin-right: 27vw; text-transform: uppercase; font-size: 8vw; font-weight: 700;">
@@ -904,7 +914,7 @@
         </div>
     </div>
 
-    <footer class="text-center" style="background-color: #fff; margin-top: 28vh;">
+    <footer class="text-center" style="background-color: #fff;">
         
         <section class="d-flex justify-content-center justify-content-lg-between p-2 border-top"
             style="padding-top: 1.2vw !important;">
@@ -1027,6 +1037,7 @@
         </div>
         
     </footer>
+    </div>
 
     
     <div id="toggle-btn" class="btn" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">

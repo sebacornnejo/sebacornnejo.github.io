@@ -60,14 +60,6 @@ html.portfolio-root {
 
 .portfolio-page .btnretro strong { font-size: inherit !important; }
 
-.portfolio-page .page-signoff {
-  margin-block-start: clamp(4rem, 14vh, 7rem) !important;
-}
-
-.portfolio-page .page-signoff + footer {
-  margin-top: clamp(3rem, 10vh, 6rem) !important;
-}
-
 footer:has(.footer-links) > section > .d-flex:not(.footer-links) {
   width: 100%;
   flex-wrap: wrap;
