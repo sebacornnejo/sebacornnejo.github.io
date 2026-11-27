@@ -73,15 +73,15 @@
             href="/portfolio/"><strong class="textv">PORTFOLIO</strong></a>
     </div>
 
-    <div class="tag" style="margin-left: 1vw;">
+    <main class="tag portfolio-destinations" aria-label="Portfolio choices" style="margin-left: 1vw;">
         <a class="textg"
-            style="padding-left: 1vw; width: 100vw; background: #5700FF; color: #000; text-decoration: none; font-size: 13.5vw;text-align: center;font-weight: 700; text-transform: uppercase;"
+            style="padding-left: 1vw; background: #5700FF; color: #000; text-decoration: none; text-align: center;font-weight: 700; text-transform: uppercase;"
             href="/portfoliog/">GENERAL <svg class="control-arrow" viewBox="0 0 20 16" width="1em" height=".8em" aria-hidden="true" focusable="false"><polygon points="0,6 11,6 11,1 20,8 11,15 11,10 0,10" fill="currentColor"/></svg></a>
 
         <a class="textg"
-            style="padding-left: 1vw; width: 100vw; background: #5700FF; color: #000; text-decoration: none; font-size: 13.5vw;text-align: center;font-weight: 700; text-transform: uppercase;"
+            style="padding-left: 1vw; background: #5700FF; color: #000; text-decoration: none; text-align: center;font-weight: 700; text-transform: uppercase;"
             href="/portfolioa/">ACADEMIC <svg class="control-arrow" viewBox="0 0 20 16" width="1em" height=".8em" aria-hidden="true" focusable="false"><polygon points="0,6 11,6 11,1 20,8 11,15 11,10 0,10" fill="currentColor"/></svg></a>
-    </div>
+    </main>
 
 
     
@@ -172,8 +172,34 @@
             }
         }
 
-        body {
-            overflow: hidden;
+        body[data-page="portfolio"] {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: minmax(max-content, 1fr) auto minmax(0, 1fr);
+            row-gap: .5rem;
+            height: 100vh;
+            height: 100dvh;
+            min-height: 0;
+        }
+
+        [data-page="portfolio"] > picture {
+            display: contents;
+        }
+
+        [data-page="portfolio"] > .site-masthead {
+            grid-row: 1;
+            align-self: start;
+        }
+
+        .portfolio-destinations {
+            grid-row: 2;
+            display: grid;
+            justify-items: start;
+        }
+
+        .portfolio-destinations > a {
+            font-size: min(13.5vw, 24vh);
+            font-size: min(13.5vw, 24dvh);
         }
     </style>
 
