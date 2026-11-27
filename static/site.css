@@ -92,6 +92,24 @@ body.portfolio-page {
 
 .skills-training { height: 63vw; }
 
+.skills-training-summary :is(strong, .skills-training-analysis) { color: #5700ff; }
+.skills-training-summary strong { font-size: max(1.1em, 2.5vw); }
+.skills-training-summary .skills-training-statistical { font-size: max(1.25em, 3.4vw); }
+.skills-training-summary .skills-training-analysis { font-size: max(1.16em, 2.8vw); }
+
+.skills-blog-heading {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: .3em;
+  font-size: max(1.1rem, 3.2vw);
+  font-weight: 700;
+  line-height: 1.18;
+  text-align: left;
+}
+.skills-blog-heading .blinking-cursor { color: #a8ff00; }
+.skills-blog-heading .textg { text-wrap: balance; }
+.skills-blog-heading .textg > span { display: block; }
+
 @media (max-width: 767px) {
   .skills-training { height: auto; min-height: 63vw; }
   .skills-training .degree-heading { font-size: .85rem !important; }
