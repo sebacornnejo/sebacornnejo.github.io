@@ -34,7 +34,7 @@ En **Actions**, abre la ejecución de Pages que corresponde al commit integrado.
 
 - En la [portada pública](https://sebacornnejo.github.io/) debe aparecer **Holistic Ocean Data**. Baja al pie y pulsa **ABOUT ME**, luego **PORTFOLIO (A)** y **HOME**.
 - Abre [una entrada directa del blog](https://sebacornnejo.github.io/blog/7/) y recarga la página para comprobar la ruta.
-- En el [laboratorio](https://sebacornnejo.github.io/laboratorio/), pulsa la ilustración y abre un gráfico. Los enlaces antiguos, como [el gráfico de clústeres](https://sebacornnejo.github.io/ClustersMallCustomers.html), siguen teniendo su propia ruta. Los mapas de estados piden las teselas de fondo en línea.
+- En el [portafolio general](https://sebacornnejo.github.io/portfoliog/#interactive-examples), abre un gráfico de la ficha sobre anarquía y ciérralo para seguir en la misma página. Al final, **More → Visualization Lab** abre el índice de gráficos. Los enlaces directos, como [el gráfico de clústeres](https://sebacornnejo.github.io/ClustersMallCustomers.html), siguen disponibles. Los mapas de estados piden las teselas de fondo en línea.
 - El [contacto](https://sebacornnejo.github.io/contactme/) abre un borrador en la aplicación de correo del visitante. El formulario procesa los campos en la pestaña.
 
 Si todavía ves la portada anterior, comprueba primero el commit de la última ejecución de Pages. Si ya terminó correctamente, recarga con **Ctrl+F5**. Ante un **404** general, revisa la rama, la carpeta de publicación y la posición de `index.html`. Si necesitas volver a la versión previa, abre la propuesta ya integrada, pulsa **Revert** e integra la propuesta de reversión que crea GitHub. El historial del repositorio conserva ambas versiones.

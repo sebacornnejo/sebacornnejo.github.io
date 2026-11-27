@@ -20,7 +20,7 @@
 <script src="/static/signoff.js" defer></script>
 <link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
 <link rel="stylesheet" href="/static/mobile.css?v=2ac1c75bccaa" media="(max-width: 767px)">
-<link rel="stylesheet" href="/static/general-projects.css?v=05d8418ee50a">
+<link rel="stylesheet" href="/static/general-projects.css?v=b0614185ca43">
 <script src="/static/chart-dialog.js?v=72478c68aecb" defer></script>
 <script src="/static/page-motion.js?v=a7a156b238c5" defer></script>
 <script src="/static/media.js?v=f3d7bf812723" defer></script>
@@ -273,15 +273,31 @@
             
             <article class="project-panel project-preview chart-card">
                 
-                <a class="chart-cover" href="/static/portfolio/HTMLs/WordsonaWikipediapage.html" data-chart="Word frequencies on a Wikipedia page" aria-haspopup="dialog">
+                <a class="chart-cover" href="/static/portfolio/HTMLs/WordsonaWikipediapage.html" data-chart="Anarchy in a Wikipedia article" aria-haspopup="dialog">
                     <img src="/static/covers/examples/wikipedia-words.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
-                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the word frequency chart</span>
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the Wikipedia chart</span>
                 </a>
                 
                 <div class="project-preview-copy">
-                    <h3>From web text to word frequencies</h3>
-                    <p>I used text from searches, Wikipedia and X to count words. Here is what shows up in one Wikipedia example. The counts depend on which words the script keeps.</p>
+                    <h3>What is Anarchy for the Internet?</h3>
+                    <p>A web scraping study of “anarchy” (“anarquía”) across Google search snippets, Wikipedia articles and posts on X. Compare which words come up most often in each source.</p>
                     <div class="chart-card-links">
+                        
+                        <a class="chart-action" href="/static/portfolio/HTMLs/WordsonmultiWikipediapage.html" data-chart="Anarchy across Wikipedia articles" aria-haspopup="dialog">
+                            <span aria-hidden="true">&gt;_</span> More Wikipedia pages
+                        </a>
+                        
+                        <a class="chart-action" href="/static/portfolio/HTMLs/WordsonaGooglesearch.html" data-chart="Anarchy in a Google search" aria-haspopup="dialog">
+                            <span aria-hidden="true">&gt;_</span> Google search
+                        </a>
+                        
+                        <a class="chart-action" href="/static/portfolio/HTMLs/WordsonmultiGooglesearch.html" data-chart="Anarchy across Google results" aria-haspopup="dialog">
+                            <span aria-hidden="true">&gt;_</span> More Google results
+                        </a>
+                        
+                        <a class="chart-action" href="/static/portfolio/HTMLs/WordsonX.html" data-chart="Anarchy in posts on X" aria-haspopup="dialog">
+                            <span aria-hidden="true">&gt;_</span> Posts on X
+                        </a>
                         
                         <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/ScrapingKnowledge/README.md">Project notes and code ↗</a>
                     </div>
@@ -289,6 +305,13 @@
             </article>
             
         </div>
+    </section>
+
+    <section id="more-visualizations" class="tag general-projects" aria-labelledby="more-visualizations-title">
+        <h2 id="more-visualizations-title" class="project-section-title"><span aria-hidden="true">&gt;_</span> More</h2>
+        <a class="project-panel project-lab-link" href="/laboratorio/#charts">
+            Visualization Lab <span aria-hidden="true">→</span>
+        </a>
     </section>
 
     <dialog id="project-chart-dialog" class="chart-dialog" aria-labelledby="chart-dialog-title">
@@ -487,7 +510,6 @@
                         <a href="/portfoliog/" class="textv">GENERAL PORTFOLIO</a>
                         <div class="menu-item-revealer"></div>
                     </div>
-<div class="menu-item"><a href="/laboratorio/" class="textv">VISUALIZATION LAB</a><div class="menu-item-revealer"></div></div>
 
                     <div class="menu-item">
                         <a href="/portfolioa/" class="textv">ACADEMIC PORTFOLIO</a>

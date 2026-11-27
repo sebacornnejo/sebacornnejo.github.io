@@ -178,6 +178,20 @@
   padding-top: .65rem;
 }
 
+.project-lab-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem;
+  min-height: 44px;
+  color: #a8ff00;
+  text-underline-offset: .17em;
+}
+
+.project-lab-link:is(:hover, :focus-visible) {
+  color: #fff;
+}
+
 .chart-dialog {
   width: min(calc(100% - 1.25rem), 86rem);
   height: min(calc(100vh - 1.25rem), var(--chart-dialog-height, 56rem));
