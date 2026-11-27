@@ -20,7 +20,8 @@
 <script src="/static/signoff.js" defer></script>
 <link rel="stylesheet" href="/static/site.css?v=6f9db8ba59e4">
 <link rel="stylesheet" href="/static/mobile.css?v=2ac1c75bccaa" media="(max-width: 767px)">
-<link rel="stylesheet" href="/static/general-projects.css?v=ddc7e3e5a90a">
+<link rel="stylesheet" href="/static/general-projects.css?v=05d8418ee50a">
+<script src="/static/chart-dialog.js?v=d32a09b8d395" defer></script>
 <script src="/static/page-motion.js?v=a7a156b238c5" defer></script>
 <script src="/static/media.js?v=f3d7bf812723" defer></script>
 <script src="/static/vendor/gsap.min.js" defer></script>
@@ -173,157 +174,136 @@
         </div>
     </section>
 
-    <h2 id="interactive-examples" class="tag project-section-title"><span aria-hidden="true">&gt;_</span> Interactive examples</h2>
-
-    <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
-        href="https://github.com/sebacornnejo/General_Porfolio/blob/main/NBAPlayers_DataAnalysis/README.md"
-        target="_blank" rel="noopener">
-        <div class="col-md-55"
-            style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
-            <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span
-                    class="textg">NBA Players Analysis &#129034;</span>
-            </h3>
+    <section id="interactive-examples" class="tag general-projects" aria-labelledby="examples-title">
+        <h2 id="examples-title" class="project-section-title"><span aria-hidden="true">&gt;_</span> Interactive examples</h2>
+        <div class="project-grid">
+            
+            <article class="project-panel project-preview chart-card">
+                
+                <a class="chart-cover" href="/static/portfolio/HTMLs/Map_DistributionofNBAPlayersTop5TeamsbyCountry.html" data-chart="NBA players by country" aria-haspopup="dialog">
+                    <img src="/static/covers/examples/nba-origins.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the player origins map</span>
+                </a>
+                
+                <div class="project-preview-copy">
+                    <h3>NBA player analysis</h3>
+                    <p>Where did the players on five championship teams come from? The map counts them by country.</p>
+                    <div class="chart-card-links">
+                        
+                        <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/NBAPlayers_DataAnalysis/README.md">Project notes and code ↗</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-panel project-preview chart-card">
+                
+                <a class="chart-cover" href="/static/portfolio/HTMLs/DistributionOfWaterQualityFeatures.html" data-chart="Water quality distributions" aria-haspopup="dialog">
+                    <img src="/static/covers/examples/water-quality.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the water quality plots</span>
+                </a>
+                
+                <div class="project-preview-copy">
+                    <h3>Water quality prediction</h3>
+                    <p>Two public datasets measure some of the same water properties. I compared their distributions to see where a potability model might struggle to transfer.</p>
+                    <div class="chart-card-links">
+                        
+                        <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/ML_WaterQualityPrediction/README.md">Project notes and code ↗</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-panel project-preview chart-card">
+                
+                <a class="chart-cover" href="/static/portfolio/HTMLs/ClustersMallCustomers.html" data-chart="Customer clusters" aria-haspopup="dialog">
+                    <img src="/static/covers/examples/customer-clusters.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the customer clusters</span>
+                </a>
+                
+                <div class="project-preview-copy">
+                    <h3>Customer segmentation with K-means</h3>
+                    <p>Income and spending scores separate a sample of shoppers into groups. The elbow plot shows what changes as the number of groups increases.</p>
+                    <div class="chart-card-links">
+                        
+                        <a class="chart-action" href="/static/portfolio/HTMLs/TheElbowMethod_MLCustomers.html" data-chart="Choosing the number of clusters" aria-haspopup="dialog">
+                            <span aria-hidden="true">&gt;_</span> Open the elbow plot
+                        </a>
+                        
+                        <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/SimpleKMeans_Marketing/README.md">Project notes and code ↗</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-panel project-preview chart-card">
+                
+                <a class="chart-cover" href="/static/portfolio/HTMLs/boxplot_species_comparison.html" data-chart="Iris species comparison" aria-haspopup="dialog">
+                    <img src="/static/covers/examples/iris-species.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the species box plot</span>
+                </a>
+                
+                <div class="project-preview-copy">
+                    <h3>Exploring the Iris dataset</h3>
+                    <p>Compare the spread of the measurements for each species, then check which pairs of features separate them in the scatter matrix.</p>
+                    <div class="chart-card-links">
+                        
+                        <a class="chart-action" href="/static/portfolio/HTMLs/scatter_matrix.html" data-chart="Iris scatter matrix" aria-haspopup="dialog">
+                            <span aria-hidden="true">&gt;_</span> Open the scatter matrix
+                        </a>
+                        
+                        <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/SimpleDataVisualization_withPlotly/README.md">Project notes and code ↗</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-panel project-preview chart-card">
+                
+                <a class="chart-cover" href="/static/portfolio/HTMLs/northwind_dashboard.html" data-chart="Northwind sales dashboard" aria-haspopup="dialog">
+                    <img src="/static/covers/examples/northwind-sales.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the Northwind dashboard</span>
+                </a>
+                
+                <div class="project-preview-copy">
+                    <h3>Northwind in SQL and Python</h3>
+                    <p>I queried the Northwind sample database to make a dashboard for comparing products and employee sales.</p>
+                    <div class="chart-card-links">
+                        
+                        <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/PythonSQL_Northwind/README.md">Project notes and code ↗</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-panel project-preview chart-card">
+                
+                <a class="chart-cover" href="/static/portfolio/HTMLs/WordsonaWikipediapage.html" data-chart="Word frequencies on a Wikipedia page" aria-haspopup="dialog">
+                    <img src="/static/covers/examples/wikipedia-words.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+                    <span class="chart-action"><span aria-hidden="true">&gt;_</span> Open the word frequency chart</span>
+                </a>
+                
+                <div class="project-preview-copy">
+                    <h3>From web text to word frequencies</h3>
+                    <p>I used text from searches, Wikipedia and X to count words. Here is what shows up in one Wikipedia example. The counts depend on which words the script keeps.</p>
+                    <div class="chart-card-links">
+                        
+                        <a class="chart-code-link" href="https://github.com/sebacornnejo/General_Porfolio/blob/main/ScrapingKnowledge/README.md">Project notes and code ↗</a>
+                    </div>
+                </div>
+            </article>
+            
         </div>
-    </a>
+    </section>
 
-    <div class="tag">
-        <iframe style="overflow: hidden !important;border: none;" class="dynamic-iframe"
-            loading="lazy" title="Map DistributionofNBAPlayersTop5TeamsbyCountry" data-media-src="/static/portfolio/HTMLs/Map_DistributionofNBAPlayersTop5TeamsbyCountry.html" width="100%"
-            style="height: 100%;" scrolling="no"></iframe>
-    </div>
-
-    <div class="tag row justify-content-center"
-        style="text-transform: uppercase; margin-top: -0.3vw; margin-bottom: 3.7vw !important;">
-        <div class="textg col-md-90" style="background: #5700FF; text-align: justify; padding-top: 0.5vw !important;">
-            <h3 class="enlarge-font" style="font-size: var(--project-copy-size, 1.2vw) !important; font-weight: 700;">I compared height, scoring and performance across NBA seasons and teams. This map shows where players on five championship teams came from. The <a href="/laboratorio/">visualization lab</a> has the other views, including age distributions and season comparisons.</h3>
+    <dialog id="project-chart-dialog" class="chart-dialog" aria-labelledby="chart-dialog-title">
+        <header class="chart-dialog-bar">
+            <h2 id="chart-dialog-title">Interactive chart</h2>
+            <form method="dialog">
+                <button type="submit" autofocus>Close <span aria-hidden="true">×</span></button>
+            </form>
+        </header>
+        <div class="chart-dialog-body" aria-busy="false">
+            <p class="chart-dialog-status" role="status">Loading chart…</p>
+            <iframe title="Interactive chart"></iframe>
         </div>
-    </div>
+    </dialog>
 
-    <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
-        href="https://github.com/sebacornnejo/General_Porfolio/blob/main/ML_WaterQualityPrediction/README.md"
-        target="_blank" rel="noopener">
-        <div class="col-md-98"
-            style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
-            <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span
-                    class="textg">Water Quality Prediction Project (Extended) &#129034;</span>
-            </h3>
-        </div>
-    </a>
-
-    <div class="tag row justify-content-center">
-        <iframe style="overflow: hidden !important;border: none;height: 100%; margin-left: -1vw;"
-            class="dynamic-iframe col-md-80"
-            loading="lazy" title="DistributionOfWaterQualityFeatures" data-media-src="/static/portfolio/HTMLs/DistributionOfWaterQualityFeatures.html" width="100%"
-            scrolling="no"></iframe>
-    </div>
-
-    <div class="tag row justify-content-center"
-        style="text-transform: uppercase; margin-top: 0vw; margin-bottom: 3.7vw !important;">
-        <div class="textg col-md-90" style="background: #5700FF; text-align: justify; padding-top: 0.5vw !important;">
-            <h3 class="enlarge-font" style="font-size: var(--project-copy-size, 1.2vw) !important; font-weight: 700;">I compared <a href="https://www.kaggle.com/datasets/uom190346a/water-quality-and-potability/data">one public dataset</a> with <a href="https://www.kaggle.com/datasets/xiaoxiaoliangzi/water-potability-prediction">a second dataset</a> and tested potability classifiers. The plots show which inputs differ between the datasets and where a model might have trouble transferring.</h3>
-        </div>
-    </div>
-
-    <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
-        href="https://github.com/sebacornnejo/General_Porfolio/blob/main/SimpleKMeans_Marketing/README.md"
-        target="_blank" rel="noopener">
-        <div class="col-md-85"
-            style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
-            <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span class="textg">Customer segmentation with K-means &#129034;</span>
-            </h3>
-        </div>
-    </a>
-
-    <div class="tag">
-        <iframe style="overflow: hidden !important;border: none;height: 50vh !important;"
-            loading="lazy" title="TheElbowMethod MLCustomers" data-media-src="/static/portfolio/HTMLs/TheElbowMethod_MLCustomers.html" width="100%" scrolling="no"></iframe>
-        <iframe style="overflow: hidden !important;border: none;height: 50vh !important; margin-top: -1.2vh;"
-            loading="lazy" title="ClustersMallCustomers" data-media-src="/static/portfolio/HTMLs/ClustersMallCustomers.html" width="100%" scrolling="no"></iframe>
-    </div>
-
-    <div class="tag row justify-content-center"
-        style="text-transform: uppercase; margin-top: -0.2vw; margin-bottom: 3.7vw !important;">
-        <div class="textg col-md-90" style="background: #5700FF; text-align: justify; padding-top: 0.5vw !important;">
-            <h3 class="enlarge-font" style="font-size: var(--project-copy-size, 1.2vw) !important; font-weight: 700;">I used K-means to group customers in a sample retail dataset by income and spending score. The elbow plot shows how within-cluster variation changes with k. The scatter plot shows the resulting groups.</h3>
-        </div>
-    </div>
-
-    <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
-        href="https://github.com/sebacornnejo/General_Porfolio/blob/main/SimpleDataVisualization_withPlotly/README.md"
-        target="_blank" rel="noopener">
-        <div class="col-md-95"
-            style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
-            <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span class="textg">
-                    Exploring the Iris dataset &#129034;</span>
-            </h3>
-        </div>
-    </a>
-
-    <div class="tag">
-        <iframe style="overflow: hidden !important;border: none;height: 65vh !important;"
-            loading="lazy" title="boxplot species comparison" data-media-src="/static/portfolio/HTMLs/boxplot_species_comparison.html" width="100%" scrolling="no"></iframe>
-        <iframe style="overflow: hidden !important;border: none;height: 65vh !important; margin-top: -1.2vh;"
-            loading="lazy" title="scatter matrix" data-media-src="/static/portfolio/HTMLs/scatter_matrix.html" width="100%" scrolling="no"></iframe>
-    </div>
-
-    <div class="tag row justify-content-center"
-        style="text-transform: uppercase; margin-top: -0.2vw; margin-bottom: 3.7vw !important;">
-        <div class="textg col-md-90" style="background: #5700FF; text-align: justify; padding-top: 0.5vw !important;">
-            <h3 class="enlarge-font" style="font-size: var(--project-copy-size, 1.2vw) !important; font-weight: 700;">A set of Plotly experiments with species measurements. Compare two groups in a box plot, then use the scatter matrix to see which measurements separate them.</h3>
-        </div>
-    </div>
-
-
-    <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
-        href="https://github.com/sebacornnejo/General_Porfolio/blob/main/PythonSQL_Northwind/README.md" target="_blank" rel="noopener">
-        <div class="col-md-98"
-            style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
-            <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span
-                    class="textg">Northwind in SQL and Python &#129034;</span>
-            </h3>
-        </div>
-    </a>
-
-    <div class="tag row justify-content-center">
-        <iframe style="overflow: hidden !important;border: none; height: 50vh; margin-left: -1vw;"
-            class="dynamic-iframe col-md-80" loading="lazy" title="northwind dashboard" data-media-src="/static/portfolio/HTMLs/northwind_dashboard.html" width="100%"
-            scrolling="no"></iframe>
-    </div>
-
-    <div class="tag row justify-content-center"
-        style="text-transform: uppercase; margin-top: 0vw; margin-bottom: 3.7vw !important;">
-        <div class="textg col-md-90" style="background: #5700FF; text-align: justify; padding-top: 0.5vw !important;">
-            <h3 class="enlarge-font" style="font-size: var(--project-copy-size, 1.2vw) !important; font-weight: 700;">I queried the Northwind sample database with SQL and built a dashboard in Python to compare products and employee sales.</h3>
-        </div>
-    </div>
-
-    <a class="tag row tarjeta" style="color: #000; text-decoration: none; text-transform: uppercase;"
-        href="https://github.com/sebacornnejo/General_Porfolio/blob/main/ScrapingKnowledge/README.md" target="_blank" rel="noopener">
-        <div class="col-md-85"
-            style="background: #5700FF; text-align: justify; margin-left: 1vw !important; padding-top: 0.5vw !important;">
-            <h3 style="font-size: var(--project-title-size, 3.35vw) !important; font-weight: 700;">
-                <span style="color: #a8ff00;" class="blinking-cursor"><strong>&gt_</strong></span><span
-                    class="textg">From web text to word frequencies &#129034;</span>
-            </h3>
-        </div>
-    </a>
-
-    <div class="tag row justify-content-center">
-        <image src="/static/portfolio/HTMLs/WordsonaWikipediapage.png" style="width: 80vw; margin-top: 0.4vw;"
-            alt="" class="col-md-80" loading="lazy"></image>
-    </div>
-
-    <div class="tag row justify-content-center"
-        style="text-transform: uppercase; margin-top: 0.4vw; margin-bottom: 3.7vw !important;">
-        <div class="textg col-md-90" style="background: #5700FF; text-align: justify; padding-top: 0.5vw !important;">
-            <h3 class="enlarge-font" style="font-size: var(--project-copy-size, 1.2vw) !important; font-weight: 700;">These scripts turn text from searches, Wikipedia and X into word frequencies, word clouds and bar charts. The outputs reflect the selected pages and preprocessing choices.</h3>
-        </div>
-    </div>
 
     <div class="justify-content-center page-signoff" style="margin-top: 30vh; margin-left: 1vw;">
         <div class="tag">

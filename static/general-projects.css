@@ -1,6 +1,5 @@
 .project-jumps,
-.general-projects,
-#interactive-examples {
+.general-projects {
   width: min(94%, 88rem);
   margin: clamp(1rem, 3vw, 2.5rem) auto;
   font-family: "Fira Code", monospace;
@@ -30,8 +29,7 @@
   background: #a8ff00;
 }
 
-.general-projects,
-#interactive-examples {
+.general-projects {
   scroll-margin-top: max(5rem, 9vw);
 }
 
@@ -107,7 +105,8 @@
   padding: 0;
 }
 
-.project-preview > img {
+.project-preview > img,
+.chart-cover img {
   display: block;
   width: 100%;
   height: auto;
@@ -117,6 +116,141 @@
 
 .project-preview-copy {
   padding: clamp(.8rem, 1.6vw, 1.45rem);
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-cover {
+  display: block;
+  text-decoration: none;
+}
+
+.chart-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .65em;
+  min-height: 44px;
+  padding: .45rem .7rem;
+  background: #5700ff;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.chart-cover > .chart-action {
+  width: 100%;
+}
+
+.chart-action > span {
+  color: #a8ff00;
+}
+
+.project-panel .chart-action {
+  color: #fff;
+}
+
+.chart-cover:is(:hover, :focus-visible) > .chart-action,
+.chart-card-links .chart-action:is(:hover, :focus-visible) {
+  background: #a8ff00;
+  color: #000;
+}
+
+.chart-cover:is(:hover, :focus-visible) .chart-action > span,
+.chart-card-links .chart-action:is(:hover, :focus-visible) > span {
+  color: inherit;
+}
+
+.chart-card .project-preview-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.chart-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem 1rem;
+  margin-top: auto;
+  padding-top: .65rem;
+}
+
+.chart-dialog {
+  width: min(calc(100% - 1.25rem), 86rem);
+  height: min(calc(100vh - 1.25rem), var(--chart-dialog-height, 56rem));
+  height: min(calc(100dvh - 1.25rem), var(--chart-dialog-height, 56rem));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 2px solid #5700ff;
+  background: #121212;
+  color: #fff;
+  font-family: "Fira Code", monospace;
+  overflow: hidden;
+}
+
+.chart-dialog[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.chart-dialog::backdrop { background: rgba(0, 0, 0, .78); }
+.portfolio-root:has(.chart-dialog[open]) { overflow: hidden; }
+
+.chart-dialog-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .7rem;
+  background: #5700ff;
+  color: #fff;
+}
+
+.chart-dialog-bar h2 {
+  margin: 0;
+  font-size: clamp(.95rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+}
+
+.chart-dialog-bar button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: .3rem .65rem;
+  border: 1px solid #fff;
+  background: #000;
+  color: #a8ff00;
+  font: inherit;
+}
+
+.chart-dialog-bar button:hover,
+.chart-dialog-bar button:focus-visible {
+  background: #a8ff00;
+  color: #000;
+}
+
+.chart-dialog-body { position: relative; }
+
+.chart-dialog-body iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  visibility: hidden;
+}
+
+.chart-dialog-body iframe[data-ready] { visibility: visible; }
+
+.chart-dialog-status {
+  position: absolute;
+  inset: 45% 1rem auto;
+  margin: 0;
+  color: inherit;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
